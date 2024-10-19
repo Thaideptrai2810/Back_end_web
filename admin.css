@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    border-bottom: 4px solid #eaeaea; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    z-index: 1000;
+}
+.menu-icon{
+    font-size: 30px;
+}
+
+.header, .menu-icon, .header-logo, .header-right {
+    display: none; /* Ẩn các phần tử này mặc định */
+}
+.header-right {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.header-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    color: black; /* Màu chữ trắng */
+    font-size: 30px; /* Kích thước chữ lớn */
+    letter-spacing: 2px; /* Khoảng cách giữa các chữ cái */
+    text-transform: uppercase; /* Chuyển chữ thành chữ hoa */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển màu chữ */
+}
+
+
+
+
+.sidebar {
+    width: 250px; /* Chiều rộng cố định cho sidebar */
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    position: fixed;
+    min-width: 250px;
+    height:100vh;
+    overflow: hidden;
+}
+
+
+
+
+
+.logo-container {
+    display: flex;
+    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+    align-items: center; /* Căn giữa logo và chữ */
+}
+.text-slimcase {
+    display: flex; /* Sử dụng flex để căn chỉnh */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    height: 50px; /* Chiều cao của phần logo */
+    font-size: 30px; /* Kích thước chữ logo */
+    padding: 10px 0; /* Khoảng cách trên và dưới */
+    font-weight: bold;
+}
+
+.logo-icon {
+    cursor: pointer;
+    padding-top: 35px;
+    font-size: 150px; /* Kích thước icon logo */
+    color: white; /* Màu sắc cho logo */
+}
+
+
+.trangtongquan {
+    margin-top: 3px; /* Khoảng cách trên cùng */
+    width: 100%; /* Chiều rộng 100% của phần tử cha */
+    padding: 15px 25px; /* Padding: 15px ở trên và dưới, 25px ở trái và phải */
+    color: rgba(255, 255, 255, 0.7); /* Màu chữ trắng với độ mờ (0.7) */
+    display: flex; /* Sử dụng flexbox để bố trí các phần tử con bên trong */
+    align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+    justify-content: space-between; /* Đẩy các phần tử con ra hai bên */
+    text-decoration: none; /* Bỏ gạch chân cho liên kết */
+    font-size: 18px; /* Kích thước chữ là 18px */
+    cursor: pointer; /* Hiển thị con trỏ chuột như bàn tay khi di chuột lên phần tử */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển tiếp cho các thuộc tính */
+    border-radius: 5px; /* Làm tròn góc cho khung */
+    height: 70px; /* Chiều cao khung để chữ được căn giữa */
+    position: relative; /* Đặt vị trí tương đối để chứa dropdown */
+}
+
+.trangtongquan i { /* Định dạng cho biểu tượng */
+    margin-right: 10px; /* Điều chỉnh khoảng cách giữa icon và chữ */
+}
+
+.trangtongquan:hover {
+    color: white; /* Đổi màu chữ thành trắng khi hover */
+    background-color: rgba(255, 255, 255, 0.1); /* Màu nền sáng lên một chút */
+    transform: translateY(-3px); /* Nổi lên 3px khi hover */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Làm cho khung nổi bật hơn khi hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Tăng độ nổi của bóng khi hover */
+}
+.trangtongquan.active {
+    color: white; /* Màu chữ */
+    background-color: rgba(255, 255, 255, 0.2); /* Màu nền sáng lên */
+    border: 2px solid white; /* Đường viền nổi bật */
+}
+
+#overlay {
+    display: none; /* Ẩn overlay mặc định */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.dropdown-content {
+    visibility: hidden; /* Ẩn dropdown mặc định */
+    opacity: 0; /* Ẩn bằng opacity */
+    position: absolute;
+    background-color: #333;
+    min-width: 220px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100; /* Đảm bảo nó nằm trên overlay */
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: opacity 0.3s ease; /* Chuyển đổi opacity */
+}
+
+.dropdown-content.show {
+    visibility: visible; /* Hiện thị dropdown */
+    opacity: 1; /* Hiện bằng opacity */
+}
+
+.dropdown-content a {
+    
+    color: white; /* Màu chữ cho liên kết */
+    padding: 10px 15px; /* Padding cho liên kết */
+    text-decoration: none; /* Bỏ gạch chân */
+    display: block; /* Hiển thị dưới dạng block */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Màu nền khi hover */
+}
+
+.logout {
+    margin-top: auto; /* Đẩy phần đăng xuất xuống cuối */
+    padding: 10px;
+    text-align: center; /* Căn giữa */
+    cursor: pointer;
+}
+
+
+.container{
+    display: flex;
+    height: 100vh;
+}
+.content {
+    margin-left: 250px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.content-section {
+    display: none; /* Ẩn tất cả các phần nội dung mặc định */
+}
+
+.content-section.active {
+    display: block; /* Hiển thị phần nội dung được đánh dấu là active */
+}
+
+.overflow-content {
+    flex: 1; /* Chiếm không gian còn lại trong content */
+    overflow-y: auto; /* Cho phép cuộn dọc */
+    padding: 20px; /* Padding cho nội dung */
+    background-color: #f9f9f9; /* Màu nền cho nội dung */
+}
+
+
+
+@media screen and (max-width: 1080px) {
+    .header {
+        display: flex; /* Hiển thị header khi nhỏ hơn 1080px */
+    }
+    .menu-icon, .header-logo, .header-right {
+        display: block; /* Hiển thị các phần tử trong header */
+    }
+    .logo-container {
+        font-size: 20px;
+    }
+    .content{
+        margin-left: 250px;
+        width: calc(100%-250px);
+        height: 100vh;
+    }
+    .logout{
+        display: none;
+    }
+}
+   
+
+
+
+
+
+.content-section.active {
+    background-color: #f0f0f0; /* Màu nền cho phần nội dung đang hiển thị */
+    border-radius: 5px; /* Bo góc cho phần nội dung */
+    padding: 20px; /* Thêm padding để nội dung không bị sát viền */
+}
+
+.content-section {
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Hiệu ứng chuyển tiếp cho opacity và visibility */
+}
+
+.content-section.active {
+    opacity: 1; /* Hiển thị phần nội dung đang hoạt động */
+    visibility: visible; /* Đảm bảo phần nội dung đang hiển thị */
+}
+
+.content-section:not(.active) {
+    opacity: 0; /* Ẩn phần nội dung không hoạt động */
+    visibility: hidden; /* Đảm bảo phần nội dung không hoạt động không chiếm không gian */
+}
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px; /* Giảm chiều rộng sidebar trên thiết bị nhỏ */
+    }
+
+    .content {
+        margin-left: 200px; /* Căn chỉnh nội dung bên trái với chiều rộng mới của sidebar */
+    }
+    
+    .header {
+        padding: 10px; /* Điều chỉnh padding cho header trên thiết bị nhỏ */
+    }
+
+    .header-logo {
+        font-size: 24px; /* Giảm kích thước logo */
+    }
+}
+.logout a:hover {
+    color: #f39c12; /* Thay đổi màu chữ khi hover */
+    text-decoration: underline; /* Gạch chân chữ khi hover */
+}
