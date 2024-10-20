@@ -22,6 +22,23 @@ document.addEventListener('click', () => {
     });
     document.getElementById('overlay').style.display = 'none'; // Ẩn overlay
 });
+function closeDropdown(event) {
+    // Dừng sự kiện từ element hiện tại
+    event.stopPropagation();
+
+    // Lấy element của dropdown đang mở
+    const dropdownContent = document.querySelector('.dropdown-content.show');
+
+    if (dropdownContent) {
+        // Loại bỏ class 'show' để đóng dropdown
+        dropdownContent.classList.remove('show');
+    }
+
+    // Ẩn overlay
+    document.getElementById('overlay').style.display = 'none';
+}
+
+
 
 // Hàm điều hướng đến các phần nội dung
 function navigateTo(sectionId) {

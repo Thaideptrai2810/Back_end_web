@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Thống Kê</title>
+    <link rel="stylesheet" href="trangtongquan.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="box">Tổng Khách Hàng: <span id="total-customers">100</span></div>
+            <div class="box">Tổng Lượt Mua: <span id="total-purchases">200</span></div>
+            <div class="box">Tổng Sản Phẩm: <span id="total-products">150</span></div>
+            <div class="box">Sản Phẩm Sắp Hết Hàng: <span id="products-near-out">5</span></div>
+
+        </div>
+        <div class="right-panel">
+            <canvas id="incomeChart"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="trangtongquan.js"></script>
+</body>
+</html>

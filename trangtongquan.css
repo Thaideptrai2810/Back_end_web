@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    overflow: auto;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-panel {
+    
+    width: 50%;
+    padding: 20px;
+    height: 250px;
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột */
+    gap: 10px; /* Khoảng cách giữa các ô */
+    border: 2px solid #ccc; /* Viền chung cho left-panel */
+    border-radius: 10px; /* Bo tròn viền */
+    padding: 20px; /* Padding cho left-panel */
+}
+
+.right-panel {
+    height: 350px;
+    width: 50%;
+    padding: 20px;
+    background-color: white;
+}
+
+.box {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e9ecef;
+    text-align: center; /* Canh giữa nội dung */
+    transition: transform 0.3s, box-shadow 0.3s; /* Thêm hiệu ứng chuyển động */
+}
+
+/* Hiệu ứng nổi lên khi rê chuột */
+.box:hover {
+    transform: translateY(-5px); /* Nổi lên */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Tạo bóng */
+}

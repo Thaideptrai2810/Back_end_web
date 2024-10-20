@@ -58,10 +58,18 @@
                     <span><i style="padding-right: 35px;" class="fa-solid fa-cart-shopping"></i>Sản phẩm</span>
                     <span class="arrow">&#9662;</span>
                     <div class="dropdown-content">
-                        <a href="#" onclick="navigateTo('add-product'); return false;"><i class="fa-solid fa-cart-plus"></i>Thêm sản phẩm</a>
-                        <a href="#" onclick="navigateTo('edit-product');return false;"><i class="fa-solid fa-cart-arrow-down"></i>Sửa sản phẩm</a>
-                        <a href="#" onclick="navigateTo('delete-product');return false;"><i class="fa-solid fa-thumbs-down"></i>Xóa sản phẩm</a>
+                        <a href="#" onclick="navigateTo('add-product'); closeDropdown(event); return false;">
+                            <i class="fa-solid fa-cart-plus"></i>Thêm sản phẩm
+                        </a>
+                        <a href="#" onclick="navigateTo('edit-product'); closeDropdown(event); return false;">
+                            <i class="fa-solid fa-cart-arrow-down"></i>Sửa sản phẩm
+                        </a>
+                        <a href="#" onclick="navigateTo('delete-product'); closeDropdown(event); return false;">
+                            <i class="fa-solid fa-thumbs-down"></i>Xóa sản phẩm
+                        </a>
                     </div>
+                    
+                    
                 </div>
             </div>
             
