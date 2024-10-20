@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Nền trang sáng hơn */
+
+}
+
+.container {
+    overflow: auto;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    padding: 20px; /* Thêm padding cho container */
+
+}
+
+
+
+.left{
+    width: 49%;
+    height: auto;
+    display: table-column;
+}
+
+.left-panel {
+    
+    width: 100%;
+    padding: 20px;
+    height: 250px;
+    background-color: #ffffff;
+    display: grid;
+    margin-bottom: 8px;
+    grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột */
+    gap: 10px; /* Khoảng cách giữa các ô */
+    border-radius: 10px; /* Bo tròn viền */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ cho left-panel */
+
+}
+
+
+.box {
+    display: flex; /* Sử dụng flexbox để chia hai phần */
+    padding: 15px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e9ecef;
+    transition: transform 0.3s, box-shadow 0.3s; /* Thêm hiệu ứng chuyển động */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ cho ô */
+}
+
+.box-icon {
+   
+    border-radius: 10px; /* Bo tròn viền */
+    width: 30%; /* 30% cho icon */
+    display: flex;
+    border: solid 1px black;
+    justify-content: center; /* Canh giữa icon */
+    align-items: center; /* Canh giữa icon theo chiều dọc */
+}
+
+.box-info {
+    width: 70%; /* 70% cho thông tin */
+    padding-left: 10px;
+    
+}
+
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Tăng bóng đổ khi hover */
+}
+
+
+
+
+.middle_panel{
+    overflow: auto;
+    width: 100%;
+    height: 250px;
+    background-color: #ffffff;
+    margin-bottom: 8px;
+    border-radius: 10px; /* Bo tròn viền */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ cho left-panel */
+    
+    
+}
+.title_khachhang {
+    width: 100%;
+    background-color: #ccc; /* Màu nền xanh */
+    color: black; /* Màu chữ trắng */
+    font-size: 20px;
+    position: sticky; /* Giữ cố định khi cuộn */
+    top: 0; /* Vị trí ở đỉnh */
+    z-index: 10; /* Đảm bảo nó nằm trên các phần tử khác */
+    padding: 10px; /* Khoảng cách bên trong */
+    border-radius: 10px 0 0 0; /* Bo tròn viền phía trên */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ */
+}
+
+
+#new-customers-list {
+    list-style-type: none; /* Bỏ dấu chấm đầu dòng */
+    padding: 0; /* Bỏ khoảng cách mặc định */
+}
+
+#new-customers-list li {
+    padding: 10px; /* Khoảng cách bên trong */
+    border-bottom: 1px solid #eee; /* Đường viền dưới từng khách hàng */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+#new-customers-list li:last-child {
+    border-bottom: none; /* Bỏ đường viền cho phần tử cuối cùng */
+}
+
+#new-customers-list li:hover {
+    background-color: #f8f9fa; /* Màu nền khi hover */
+}
+
+
+
+
+.right-panel {
+    height: 350px;
+    width: 50%;
+    padding: 20px;
+    border-radius: 10px; /* Bo tròn viền */
+
+    background-color: white;
+    display: flex;
+    margin-left: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ cho right-panel */
+
+}
+
+
+
+
+
+
