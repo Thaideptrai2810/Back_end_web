@@ -20,7 +20,7 @@ animateValue("total-products", 0, 150, 1000);
 animateValue("products-near-out", 0, 5, 1000);
 
 // Dữ liệu thu nhập của năm nay và năm trước
-const currentYearData = [3000, 2500, 3200, 2900, 2700, 3100, 3300, 2800, 3600]; // 9 tháng
+const currentYearData = [3000, 2500, 3200, 2900, 2700, 3100, 3300, 2800, 3600,4000]; // 9 tháng
 const previousYearData = [2800, 2200, 3100, 2500, 2900, 3000, 2700, 2500, 3300, 3200, 3400, 3500]; // 12 tháng
 
 // Tạo biểu đồ
