@@ -96,30 +96,46 @@ body {
     font-size: 20px;
     position: sticky; /* Giữ cố định khi cuộn */
     top: 0; /* Vị trí ở đỉnh */
-    z-index: 10; /* Đảm bảo nó nằm trên các phần tử khác */
+    z-index: 11; /* Đảm bảo nó nằm trên các phần tử khác */
     padding: 10px; /* Khoảng cách bên trong */
     border-radius: 10px 0 0 0; /* Bo tròn viền phía trên */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ */
 }
 
 
-#new-customers-list {
-    list-style-type: none; /* Bỏ dấu chấm đầu dòng */
-    padding: 0; /* Bỏ khoảng cách mặc định */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Bỏ gạch nối giữa các ô */
 }
 
-#new-customers-list li {
-    padding: 10px; /* Khoảng cách bên trong */
-    border-bottom: 1px solid #eee; /* Đường viền dưới từng khách hàng */
-    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea; /* Dòng kẻ dưới mỗi ô */
+    border-right: 1px solid #eaeaea; /* Dòng kẻ dọc giữa các ô */
 }
 
-#new-customers-list li:last-child {
-    border-bottom: none; /* Bỏ đường viền cho phần tử cuối cùng */
+th {
+    background-color: #f1f1f1; /* Màu nền cho tiêu đề bảng */
 }
 
-#new-customers-list li:hover {
-    background-color: #f8f9fa; /* Màu nền khi hover */
+tr:hover {
+    background-color: #f9f9f9; /* Màu nền khi di chuột qua hàng */
+}
+
+/* Xóa dòng kẻ dọc ở ô cuối cùng */
+td:last-child, th:last-child {
+    border-right: none;
+}
+
+.bottom_panel{
+    overflow: auto;
+    width: 100%;
+    height: 250px;
+    background-color: #ffffff;
+    margin-bottom: 8px;
+    border-radius: 10px; /* Bo tròn viền */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ cho left-panel */
 }
 
 
