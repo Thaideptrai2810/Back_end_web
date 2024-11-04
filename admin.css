@@ -195,13 +195,12 @@ body {
 .overflow-content {
     flex: 1; /* Chiếm không gian còn lại trong content */
     overflow-y: auto; /* Cho phép cuộn dọc */
-    padding: 20px; /* Padding cho nội dung */
     background-color: #f9f9f9; /* Màu nền cho nội dung */
 }
 
 
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1100px) {
     .header {
         display: flex; /* Hiển thị header khi nhỏ hơn 1080px */
     }
@@ -219,6 +218,13 @@ body {
     .logout{
         display: none;
     }
+    .sidebar{
+     display: none;
+    }
+    .content{
+        margin-left: 0;
+    }
+
 }
    
 
@@ -261,6 +267,12 @@ body {
     .header-logo {
         font-size: 24px; /* Giảm kích thước logo */
     }
+    .sidebar{
+        display: none;
+       }
+       .content{
+           margin-left: 0;
+       }
 }
 .logout a:hover {
     color: #f39c12; /* Thay đổi màu chữ khi hover */
