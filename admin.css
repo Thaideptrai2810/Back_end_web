@@ -8,6 +8,40 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* Bảng đăng nhập */
+.login-form {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+
+#content_admin{
+
+
+
+
+
 .header {
     position: sticky;
     top: 0;
@@ -24,6 +58,7 @@ body {
 }
 .menu-icon{
     font-size: 30px;
+    transition: transform 0.3s ease; /* Thêm hiệu ứng xoay */
 }
 
 .header, .menu-icon, .header-logo, .header-right {
@@ -61,6 +96,7 @@ body {
     min-width: 250px;
     height:100vh;
     overflow: hidden;
+    transition: left 0.3s ease; /* Hiệu ứng trượt */
 }
 
 
@@ -201,11 +237,30 @@ body {
 
 
 @media screen and (max-width: 1100px) {
+    .sidebar{
+     display: none;
+    }
     .header {
         display: flex; /* Hiển thị header khi nhỏ hơn 1080px */
     }
+    
     .menu-icon, .header-logo, .header-right {
         display: block; /* Hiển thị các phần tử trong header */
+    }
+    .menu-icon:hover{
+        .sidebar{
+            display: block;
+        }
+    }
+    /* Khi sidebar mở */
+    .sidebar.open {
+      display: block; /* Hiển thị sidebar khi thêm class 'open' */
+      z-index: 100;
+    }
+
+    /* Xoay icon khi sidebar mở */
+    .menu-icon.rotate {
+        transform: rotate(180deg); /* Xoay icon 180 độ */
     }
     .logo-container {
         font-size: 20px;
@@ -218,9 +273,7 @@ body {
     .logout{
         display: none;
     }
-    .sidebar{
-     display: none;
-    }
+    
     .content{
         margin-left: 0;
     }
@@ -277,4 +330,5 @@ body {
 .logout a:hover {
     color: #f39c12; /* Thay đổi màu chữ khi hover */
     text-decoration: underline; /* Gạch chân chữ khi hover */
+}
 }

@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 function navigateTo(sectionId) {
     // Ẩn tất cả các phần nội dung
     const sections = document.querySelectorAll('.content-section');
@@ -31,3 +38,37 @@ function navigateTo(sectionId) {
 document.addEventListener('DOMContentLoaded', () => {
     navigateTo('dashboard');
 });
+
+
+
+
+const menuIcon = document.getElementById('menu-icon');
+const sidebar = document.getElementById('sidebar');
+
+
+// Hàm mở/đóng sidebar khi nhấn vào menu icon
+menuIcon.addEventListener('click', function(event) {
+    event.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
+    toggleSidebar();
+});
+
+// Hàm để mở/đóng sidebar và xoay icon
+function toggleSidebar() {
+    sidebar.classList.toggle('open'); // Mở/đóng sidebar
+    menuIcon.classList.toggle('rotate'); // Xoay icon
+}
+
+// Đóng sidebar nếu nhấn ra ngoài sidebar
+document.addEventListener('click', function(event) {
+    if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+        closeSidebar();
+    }
+});
+
+// Hàm đóng sidebar và reset icon
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    menuIcon.classList.remove('rotate');
+}
+
+

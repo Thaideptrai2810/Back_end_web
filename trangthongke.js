@@ -99,30 +99,7 @@ const incomeChart = new Chart(ctx, {
     }
 });
 
-// Tạo hiệu ứng cho biểu đồ
-const animateChart = () => {
-    const duration = 1000; // Thời gian hoạt động
-    const frames = 60; // Số khung hình
-    const step = duration / frames; // Thời gian cho mỗi khung hình
-    const increment1 = (Math.max(...currentYearData) / frames); // Tăng dần cho năm nay
-    const increment2 = (Math.max(...previousYearData) / frames); // Tăng dần cho năm trước
 
-    let currentFrame = 0;
-    const interval = setInterval(() => {
-        if (currentFrame < frames) {
-            chartData[0] += increment1;
-            chartData[1] += increment2;
-            incomeChart.data.datasets[0].data = currentYearData.map(value => (value ? Math.floor(value * (currentFrame / frames)) : null));
-            incomeChart.data.datasets[1].data = previousYearData.map(value => Math.floor(value * (currentFrame / frames)));
-            incomeChart.update();
-            currentFrame++;
-        } else {
-            clearInterval(interval);
-        }
-    }, step);
-};
-
-animateChart();
 
 
 

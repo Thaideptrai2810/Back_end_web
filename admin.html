@@ -4,11 +4,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="trangtongquan.css">
+    <link rel="stylesheet" href="trangthongke.css">
+    <link rel="stylesheet" href="tranggiohang.css">
     <title>Quản lý cửa hàng</title>
 </head>
 <body>
+
+
+<div id="content_admin">
+
+
+
+
+
+
+
     <header class="header">
-        <div class="menu-icon">
+        <div class="menu-icon" id="menu-icon">
             <i class="fa-solid fa-bars"></i>
         </div>
         <div class="header-logo">
@@ -19,9 +31,17 @@
         </div>
     </header>
 
+
+
     <div class="container">
+
+
+
+
+
+
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="logo-container">
                 <div class="text-slimcase">
                     <span>SLIM CASE</span>
@@ -58,6 +78,10 @@
             
            
             
+
+
+
+
             
             <div class="logout">
                 <a href="#" class="no-underlinefont" style="color: white;">
@@ -66,9 +90,23 @@
             </div>
         </div>
 
+
+
+
+
+
+
         <!-- Content area -->
         <div class="content">
             <div class="overflow-content">
+
+
+
+
+
+
+
+
                 <div class="content-section active" id="dashboard">
                     <div class="trangtongquancon">
 
@@ -159,24 +197,560 @@
                     </div>
                     
                 </div>
+
+
+
+
+
+
+
+
                 <div class="content-section" id="customers">
                     <h1>Đây là trang khách hàng.</h1>
                 </div>
+
+
+
+
+
+
+
+
                 <div class="content-section" id="products">
                     <h1>Danh sách sản phẩm</h1>
                     <p>Đây là nơi bạn có thể xem danh sách sản phẩm.</p>
                 </div>
                 
+
+
+
+
+
+
+
+
+
+
+
                 <div class="content-section" id="cart">
-                    <h1>Giỏ hàng của bạn.</h1>
+
+                    <div class="container_giohang">
+
+                        <div class="header_giohang">
+
+
+                            <div class="left_headergiohang">
+                                    <b> Danh sách sản phẩm</b>
+                            </div>
+
+
+                            <div class="right_headergiohang">
+
+                                <div class="left_rightgiohang">              
+                                    <p>Xuất dữ liệu</p>
+                                </div>
+
+
+                                <div class="right_rightgiohang">Tạo đơn hàng</div>
+                                
+                            </div>
+                
+                
+                        </div>
+
+
+
+                        <div class="border_giohang">
+                            <div class="content_giohang">
+                                <div class="header_contentgiohang">
+                                    <div class="menu_headergiohang active_giohang" onclick="navigateTo_giohang('tatcadonhang')"><b>Tất cả đơn hàng</b></div>
+                                    <div class="menu_headergiohang " onclick="navigateTo_giohang('chuaxuly')"><b>Chưa xử lý</b></div>
+                                    <div class="menu_headergiohang " onclick="navigateTo_giohang('daxacnhan')"><b>Đã xác nhận</b></div>
+                                    <div class="menu_headergiohang " onclick="navigateTo_giohang('dagiao')"><b>Đã giao hàng</b></div>
+                                    <div class="menu_headergiohang " onclick="navigateTo_giohang('dahuy')"><b>Đã hủy</b></div>
+                
+                                </div>
+                                <div class="content_contentgiohang">
+                
+                
+                                    <div class="content_contentgiohang_section" id="tatcadonhang" >
+                                        
+                                        <div class="search_contentgiohang">
+                
+                
+                                            <div class="left_search_contentgiohang">
+                                                <i class="fa-solid fa-filter"></i> <b>Thêm điều kiện lọc</b>
+                                            </div>
+                                            
+                                            <!-- Dropdown filter -->
+                                            <div class="filter-dropdown" id="filter-dropdown">
+                                                <div class="filter-condition">
+                
+                
+                                                    <label for="start-date">Ngày bắt đầu:</label>
+                                                    <input type="date" id="start-date">
+                                            
+                
+                
+                                                    <label for="end-date">Ngày kết thúc:</label>
+                                                    <input type="date" id="end-date">
+                                            
+                
+                
+                                                    <label for="order-status">Trạng thái đơn hàng:</label>
+                                                    <select id="order-status">
+                                                        <option value="">Tất cả trạng thái</option>
+                                                        <option value="processing">Chưa xử lý</option>
+                                                        <option value="completed" >Đã xác nhận</option>
+                                                        <option value="pending">Đã giao hàng</option>
+                                                    </select>
+                                            
+                
+                                                    <label for="district-filter">Quận:</label>
+                                                    <select id="district-filter">
+                                                        <option value="">Quận 1</option>
+                                                        <option value="">Quận Tân Phú</option>
+                                                        <!-- Các quận sẽ được liệt kê ở đây -->
+                                                    </select>
+                                            
+                
+                                                    <button id="filter-button">Lọc</button>
+                
+                
+                                                    <button id="clear-filters-button">Xóa điều kiện lọc</button>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                
+                
+                                            <div class="right_search_contentgiohang">
+                                                <input type="text" id="search-input" placeholder="Tìm kiếm..." />
+                                            </div>
+                                            <div class="right_right_search_contentgiohang">
+                                               <i id="search-button" class="fa-solid fa-magnifying-glass"></i>
+                                            </div>
+                                        </div>
+                
+                                        
+                
+                                       <div class="listdonhang">
+                    <div class="table-listdonhang">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th>Ngày</th>
+                                    <th>Tên</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Trạng thái</th>
+                                    <th>Giao hàng</th>
+                                    <th>Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103881CSS')">#DH103881CSS</a></td> 
+                                        <!-- Modal Chi tiết sản phẩm -->
+                                        <div id="product-details-modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close-button" onclick="closeProductDetails()">&times;</span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                
+                
+                                    <td>01/11/2024</td>
+                                    <td>Lam San</td>
+                                    <td>Quận Tân Phú</td>
+                                    <td><span class="status processing"><a href="javascript:void(0);" onclick="navigateTo_giohang('chuaxuly')">Chưa xử lý</a></span></td>
+                                    <td><span class="status pending">Chưa giao hàng</span></td>
+                                    <td>62,000 ₫</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103881CSS')">#DH103881CSS</a></td> 
+                                        <!-- Modal Chi tiết sản phẩm -->
+                                        <div id="product-details-modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close-button" onclick="closeProductDetails()">&times;</span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                
+                
+                                    <td>01/11/2024</td>
+                                    <td>Lam San</td>
+                                    <td>Quận Tân Phú</td>
+                                    <td><span class="status processing"><a href="javascript:void(0);" onclick="navigateTo_giohang('chuaxuly')">Chưa xử lý</a></span></td>
+                                    <td><span class="status pending">Chưa giao hàng</span></td>
+                                    <td>62,000 ₫</td>
+                                </tr> <tr>
+                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103881CSS')">#DH103881CSS</a></td> 
+                                        <!-- Modal Chi tiết sản phẩm -->
+                                        <div id="product-details-modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close-button" onclick="closeProductDetails()">&times;</span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                
+                
+                                    <td>01/11/2024</td>
+                                    <td>Lam San</td>
+                                    <td>Quận Tân Phú</td>
+                                    <td><span class="status processing"><a href="javascript:void(0);" onclick="navigateTo_giohang('chuaxuly')">Chưa xử lý</a></span></td>
+                                    <td><span class="status pending">Chưa giao hàng</span></td>
+                                    <td>62,000 ₫</td>
+                                </tr> <tr>
+                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103881CSS')">#DH103881CSS</a></td> 
+                                        <!-- Modal Chi tiết sản phẩm -->
+                                        <div id="product-details-modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close-button" onclick="closeProductDetails()">&times;</span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                
+                
+                                    <td>01/11/2024</td>
+                                    <td>Lam San</td>
+                                    <td>Quận Tân Phú</td>
+                                    <td><span class="status processing"><a href="javascript:void(0);" onclick="navigateTo_giohang('chuaxuly')">Chưa xử lý</a></span></td>
+                                    <td><span class="status pending">Chưa giao hàng</span></td>
+                                    <td>62,000 ₫</td>
+                                </tr> <tr>
+                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103881CSS')">#DH103881CSS</a></td> 
+                                        <!-- Modal Chi tiết sản phẩm -->
+                                        <div id="product-details-modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close-button" onclick="closeProductDetails()">&times;</span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                
+                
+                                    <td>01/11/2024</td>
+                                    <td>Lam San</td>
+                                    <td>Quận Tân Phú</td>
+                                    <td><span class="status processing"><a href="javascript:void(0);" onclick="navigateTo_giohang('chuaxuly')">Chưa xử lý</a></span></td>
+                                    <td><span class="status pending">Chưa giao hàng</span></td>
+                                    <td>62,000 ₫</td>
+                                </tr> <tr>
+                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103881CSS')">#DH103881CSS</a></td> 
+                                        <!-- Modal Chi tiết sản phẩm -->
+                                        <div id="product-details-modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close-button" onclick="closeProductDetails()">&times;</span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                
+                
+                                    <td>01/11/2024</td>
+                                    <td>Lam San</td>
+                                    <td>Quận Tân Phú</td>
+                                    <td><span class="status processing"><a href="javascript:void(0);" onclick="navigateTo_giohang('chuaxuly')">Chưa xử lý</a></span></td>
+                                    <td><span class="status pending">Chưa giao hàng</span></td>
+                                    <td>62,000 ₫</td>
+                                </tr> <tr>
+                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103881CSS')">#DH103881CSS</a></td> 
+                                        <!-- Modal Chi tiết sản phẩm -->
+                                        <div id="product-details-modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close-button" onclick="closeProductDetails()">&times;</span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                
+                
+                                    <td>01/11/2024</td>
+                                    <td>Lam San</td>
+                                    <td>Quận Tân Phú</td>
+                                    <td><span class="status processing"><a href="javascript:void(0);" onclick="navigateTo_giohang('chuaxuly')">Chưa xử lý</a></span></td>
+                                    <td><span class="status pending">Chưa giao hàng</span></td>
+                                    <td>62,000 ₫</td>
+                                </tr> <tr>
+                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103881CSS')">#DH103881CSS</a></td> 
+                                        <!-- Modal Chi tiết sản phẩm -->
+                                        <div id="product-details-modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close-button" onclick="closeProductDetails()">&times;</span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                
+                
+                                    <td>01/11/2024</td>
+                                    <td>Lam San</td>
+                                    <td>Quận Tân Phú</td>
+                                    <td><span class="status processing"><a href="javascript:void(0);" onclick="navigateTo_giohang('chuaxuly')">Chưa xử lý</a></span></td>
+                                    <td><span class="status pending">Chưa giao hàng</span></td>
+                                    <td>62,000 ₫</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103880CSS')">#DH103881CSS</a></td>
+                                     <!-- Modal Chi tiết sản phẩm -->
+                                     <div id="product-details-modal" class="modal">
+                                        <div class="modal-content">
+                                            <span class="close-button" onclick="closeProductDetails()">&times;</span>
+                                            
+                                        </div>
+                                    </div>
+                                    <td>02/11/2024</td>
+                                    <td>Nguyễn Thanh</td>
+                                    <td>Quận 5</td>
+                                    <td><span class="status completed">Đã xác nhận</span></td>
+                                    <td><span class="status pending">Chưa giao hàng</span></td>
+                                    <td>250,000 ₫</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                                    </div>
+                
+                                   
+                                    <div class="content_contentgiohang_section" id="chuaxuly" >
+                                       chua xu ly
+                                    </div>
+                                    <div class="content_contentgiohang_section" id="daxacnhan" >
+                                        da xac nhan
+                                    </div>
+                                    <div class="content_contentgiohang_section" id="dagiao" >
+                                        da giao
+                                    </div>
+                                    <div class="content_contentgiohang_section" id="dahuy" >
+                                        da huy
+                                    </div>
+                
+                                </div>
+                
+                            </div>
+                
+                        </div>
+                    </div>
+                  
                 </div>
                 <div class="content-section" id="statistics">
-                    <h1>Thống kê doanh thu.</h1>
+                    <div class="container_thongke">
+                        <div class="left_thongke">
+                
+                
+                            <div class="left-panel">
+                
+
+
+                                <a href="javascript:void(0);" onclick="navigateTo('customers')">
+                                <div class="box_thongke">
+                                    <div class="box-icon_thongke">
+                                        <p><i class="fas fa-users"></i></p> <!-- Biểu tượng cho khách hàng -->
+                                    </div>
+                                    <div class="box-info_thongke">
+                                       <p>Tổng Khách Hàng: <span id="total-customers">100</span></p> 
+                                    </div>
+                                </div>
+                                </a>
+
+
+
+
+                                <a href="javascript:void(0);" onclick="navigateTo('cart')">
+                                <div class="box_thongke">
+                                    
+                                    <div class="box-icon_thongke">
+                                        <p><i class="fas fa-shopping-cart"></i> </p><!-- Biểu tượng cho lượt mua -->
+                                    </div>
+                                    <div class="box-info_thongke">
+                                       <p>Tổng Lượt Mua: <span id="total-purchases">200</span></p> 
+                                    </div>
+                                </div></a>
+
+
+
+                                <a href="javascript:void(0);" onclick="navigateTo('products')">
+                                <div class="box_thongke">
+                                    <div class="box-icon_thongke">
+                                        <p><i class="fas fa-box"></i> </p><!-- Biểu tượng cho sản phẩm -->
+                                    </div>
+                                    <div class="box-info_thongke">
+                                       <p> Tổng Sản Phẩm: <span id="total-products">150</span></p>
+                                    </div>
+                                </div></a>
+
+
+
+
+
+                                <a href="javascript:void(0);" onclick="navigateTo('products')">
+                                <div class="box_thongke">
+                                    <div class="box-icon_thongke">
+                                       <p> <i class="fas fa-exclamation-triangle"></i> </p><!-- Biểu tượng cho sản phẩm sắp hết hàng -->
+                                    </div>
+                                    <div class="box-info_thongke">
+                                      <p> Sắp Hết Hàng: <span id="products-near-out">5</span></p>
+                                    </div>
+                
+                                </div>
+                
+                            </div></a>
+                            
+
+
+                        
+                       <div class="middle_panel"> 
+                
+                        <div class="title_khachhang"><b>KHÁCH HÀNG MỚI</b></div>
+                
+                            <table>
+                                <tr>
+                                    <td> Nguyễn Văn A</td>
+                                    <td> 0377000000</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Trần Thị B</td>
+                                    <td>0987654321</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Phạm Văn C</td>
+                                    <td>0912345678</td>
+                                </tr>
+                                <tr>
+                                    <td>Trần Thị B</td>
+                                    <td>0987654321</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Phạm Văn C</td>
+                                    <td>0912345678</td>
+                                    <tr>
+                                        <td>Trần Thị B</td>
+                                        <td>0987654321</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Phạm Văn C</td>
+                                        <td>0912345678</td>
+                            </table>
+                        </div>
+                
+                
+                
+                
+                        <div class="bottom_panel">
+                            <div class="title_khachhang"><B>TOP KHÁCH HÀNG</B></div>
+                            
+                            <table class="custom-table">                
+                                <thead>
+                                    <tr>
+                                        <th class="small-column">Top</th>
+                                        <th class="medium-column">Tên</th>
+                                        <th class="medium-column">Số điện thoại</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td> Nguyễn Văn A</td>
+                                    <td> 0377000000</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Trần Thị B</td>
+                                    <td>0987654321</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Phạm Văn C</td>
+                                    <td>0912345678</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Trần Thị B</td>
+                                    <td>0987654321</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Phạm Văn C</td>
+                                    <td>0912345678</td>
+                                </tr>
+                
+                                <tr>
+                                        <td>7</td>
+                                        <td>Trần Thị B</td>
+                                        <td>0987654321</td>
+                                        
+                                </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Phạm Văn C</td>
+                                        <td>0912345678</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                            
+                
+                        </div>
+                        
+                        
+                
+                      
+                    <div class="right_thongke">
+                
+                        <div class="right-panel">
+                            <canvas id="incomeChart"></canvas>
+                        </div>
+                
+                        <div class=" right-panel">
+                            <div class="right_trong1">
+                                <canvas id="myPieChart"></canvas>
+                
+                            </div>
+                
+                            <div class="right_trong2">
+                
+                            </div>
+                
+                
+                        </div>
+                
+                
+                    </div>
+                       
+                
+                        
+                
+                       
+                
+                        
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
                 </div>
             </div>
         </div>
     </div>
 
+
+</div>
+
     <script src="admin.js"></script>
+    <script src="trangthongke.js"></script>
+    <script src="tranggiohang.js"></script>
+
 </body>
 </html>
