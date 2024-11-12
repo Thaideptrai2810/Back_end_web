@@ -365,6 +365,55 @@ a:hover {
     background-color: #ffae42;
     color: #fff;
 }
+.thaotac{
+    height: 90px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    text-align: center;
+
+    
+    
+}
+.xacnhantren{
+    width: 98%;
+    height: 50%;
+    border: solid 1px black;
+    position: relative;
+    left: 3px;
+    padding-top: 10px;
+
+
+}
+.xacnhanduoi{
+    width: 98%;
+    height: 50%;
+    position: relative;
+    left: 3px;
+    display: flex;
+    padding-top: 3px;
+}
+.dongyxacnhan{
+    width: 48%;
+    height: 100%;
+    border: solid 1px black;
+    position: relative;
+    left: 3px;
+    position: relative;
+    left: 0;
+    padding-top: 10px;
+
+}
+.huyxacnhan{
+    width: 48%;
+    height: 100%;
+    border: solid 1px black;
+    position: relative;
+    right: -10px;
+    padding-top: 10px;
+
+}
 
 a {
     text-decoration: none; /* Xóa gạch chân */
