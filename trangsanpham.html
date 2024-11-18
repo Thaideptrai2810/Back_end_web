@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lí sản phẩm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="trangsanpham.css">
+</head>
+<body>
+    <div id="productListSection" style="width: 99%; background-color:#CCC;padding: 15px;">
+        <div class="title_product">
+            <b style="margin-left: 20px;"> Quản lí sản phẩm </b>
+        </div>
+        <div class="content_sanpham">
+            <div style="width: 100%; height: 30%;">
+                <div style="background-color: #fff;padding: 10px;">
+                <span onclick="showAddProductForm()"><button>
+                    
+                        <i class="fa-solid fa-plus"></i><span> Thêm sản phẩm </span>
+                    
+                </button></span>
+                <hr> 
+            </div>
+            <div style="margin: 15px;background-color: #ffff;width: 97%;border-radius: 3px;padding: 8px;" >
+                <table>
+                    <tr>
+                            <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Ảnh</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tính năng</th>
+                    </tr>
+                </table>
+            </div>  
+        </div>
+        </div>
+    </div>
+    <div id="addProductSection" class="hidden" style="width: 98%; background-color:#CCC;padding: 15px;overflow: auto;">
+        <div class="title_product">
+            <span style="margin-left: 20px;">Danh sách sản phẩm / Thêm sản phẩm</span>
+        </div>
+        <div class="content_sanpham">
+            <div class="add-product">
+                <span>Tạo mới sản phẩm</span>
+            </div>
+            <hr class="yellow-line">
+            
+            <div class="status">
+                <span>Thông tin chung</span>
+            </div>
+            
+            <hr class="line">
+            <div class="add-product2" style="width: 100%;text-align: center;">
+                <div class="box">
+                    <div>
+                        <span>Tên sản phẩm</span>
+                    </div>
+                    <div>
+                        <input type="text" id="productName" name="productName" >                        
+                    </div>
+                </div>
+                <div class="box">
+                    <div>
+                        <span>Thương hiệu</span>
+                    </div>
+                    <div>
+                        <select id="productBrand" name="productBrand">
+                            <option value="" disabled selected>-Chọn thương hiệu-</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Xiaomi">Xiaomi</option>
+                            <option value="Oppo">Oppo</option>
+                            <option value="Vivo">Vivo</option>
+                        </select>                        
+                    </div>
+                </div>
+                <div class="box">
+                    <div>
+                        <span>Mẫu điện thoại</span>
+                    </div>
+                    <div>
+                        <input type="text" id="productModel" name="productModel">                        
+                    </div>
+                </div>
+            </div>
+            <div class="add-product2" style="width: 100%;text-align: center;">
+                <div class="box">
+                    <div>
+                        <span>Giá bán</span>
+                    </div>
+                    <div>
+                        <input type="text" id="productPrice" name="productPrice">                        
+                    </div>
+                </div>
+                <div class="box">
+                    <div>
+                        <span>Số lượng</span>
+                    </div>
+                    <div>
+                        <input type="text" id="productQuantity" name="productQuantity">                        
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="add-product2" style="margin-top: 10px;">
+                    <span>Ảnh sản phẩm</span>
+                </div>
+                <div class="icon_sanpham" style="cursor: pointer;">
+                    <label for="productImage" class="icon_sanpham" style="cursor: pointer;">
+                        <input type="file" id="productImage" name="productImage" accept="image/*" style="display: none;">
+                        <i class="fa-solid fa-cloud-arrow-up"></i><span> Chọn Ảnh</span>
+                    </label>
+                </div>
+            </div>
+            <div id="fileNameDisplay"></div>    
+            <div class="add-product3">
+                <span>Mô tả sản phẩm</span>
+            </div>
+            <div>  
+                <input type="text" id="productDescription" name="productDescription" style="height:100px; ">
+            </div>
+            <div class="luuhuy">
+                <div class="huy" onclick="showProductList()">
+                    <i class="fa-solid fa-xmark"></i><span> Hủy</span>
+                </div>
+                <div class="luu" onclick="saveProducts()">
+                    <i class="fa-solid fa-floppy-disk"></i><span> Lưu</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hộp xác nhận xóa sản phẩm -->
+    <div id="deleteConfirmBox">
+        <p>Bạn có chắc muốn xóa sản phẩm này?</p>
+        <button onclick="confirmDelete()">Có</button>
+        <button onclick="closeDeleteConfirm()">Không</button>
+    </div>
+
+    <!-- Hộp chỉnh sửa sản phẩm -->
+    <div id="editProductBox">
+        <h3>Sửa thông tin sản phẩm</h3>
+        <div>
+            <label for="editProductName">Tên sản phẩm</label>
+            <input type="text" id="editProductName" name="editProductName">
+        </div>
+        <div>
+            <label for="editProductBrand">Thương hiệu</label>
+            <select id="editProductBrand" name="editProductBrand">
+                <option value="Apple">Apple</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Xiaomi">Xiaomi</option>
+                <option value="Oppo">Oppo</option>
+                <option value="Vivo">Vivo</option>
+            </select>
+        </div>
+        <div>
+            <label for="editProductModel">Mẫu điện thoại</label>
+            <input type="text" id="editProductModel" name="editProductModel">
+        </div>
+        <div>
+            <label for="editProductPrice">Giá bán</label>
+            <input type="text" id="editProductPrice" name="editProductPrice">
+        </div>
+        <div>
+            <label for="editProductQuantity">Số lượng</label>
+            <input type="text" id="editProductQuantity" name="editProductQuantity">
+        </div>
+        <div>
+            <label for="editProductImage">Ảnh sản phẩm</label>
+            <input type="file" id="editProductImage" name="editProductImage" accept="image/*" onchange="previewEditImage()">
+            <div id="editImagePreviewContainer">
+                <img id="editImagePreview" src="" alt="Current Product Image" style="width: 100px; height: auto; display: none;">
+                <button type="button" onclick="deleteEditImage()" id="deleteEditImageButton" style="display: none;">Xóa ảnh</button>
+            </div>
+        </div>
+              
+        <div>
+            <label for="editProductDescription">Mô tả sản phẩm</label>
+            <input type="text" id="editProductDescription" name="editProductDescription">
+        </div>
+        <button onclick="saveEditedProduct()">Lưu</button>
+        <button onclick="closeEditProduct()">Hủy</button>
+    </div>
+
+    
+    
+</body>
+</html>

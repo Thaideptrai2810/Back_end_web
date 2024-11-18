@@ -96,17 +96,21 @@ document.getElementById('clear-filters-button').addEventListener('click', functi
 
 
 
-// Hàm hiển thị chi tiết sản phẩm
-function showProductDetails(productId) {
-    // Hiển thị modal
-    document.getElementById('product-details-modal').style.display = 'block';
+function showProductDetails(orderId) {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => modal.style.display = 'none'); // Đảm bảo ẩn tất cả các modal trước
+    const modal = document.getElementById(`product-details-${orderId}`);
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}   
 
-    
+function closeProductDetails(orderId) {
+    const modal = document.getElementById(`product-details-${orderId}`);
+    if (modal) {
+        modal.style.display = 'none';
+    }
 }
 
-// Hàm đóng modal
-function closeProductDetails() {
-    document.getElementById('product-details-modal').style.display = 'none';
-}
 
 
