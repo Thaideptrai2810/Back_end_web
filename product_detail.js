@@ -51,21 +51,7 @@ function initializeModelSelection(modelButtons, modelName) {
     }
 }
 
-// Sửa đổi window.onload để kết hợp cả hai mã
-window.onload = function() {
-    // Mã số 1: Khởi tạo preview sản phẩm và model selection
-    const initialProduct = document.getElementById('product_preview');
-    if (initialProduct) {
-        initializeProductPreview(initialProduct);
-    }
 
-    const modelButtons = document.querySelectorAll('.model_option');
-    const modelName = document.getElementById('model_name');
-    initializeModelSelection(modelButtons, modelName);
 
-    // Mã số 2: Tải danh sách người dùng
-    loadUsers();  // Tải danh sách người dùng
 
-    // Đảm bảo hộp thoại chỉnh sửa không hiển thị khi tải trang
-    document.getElementById("editUserModal").style.display = "none";
-};
+

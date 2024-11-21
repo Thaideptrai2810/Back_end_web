@@ -9,10 +9,7 @@ function showProductList () {
     clearInputFields();
 
 }
-window.onload = function() {
-    // Hiển thị lại sản phẩm từ localStorage khi trang được tải lại
-    displayProducts();
-    };
+
 function clearInputFields() {
     // Lấy tất cả các trường nhập liệu trong phần thêm sản phẩm
     document.getElementById("productName").value = "";
@@ -36,7 +33,13 @@ function clearInputFields() {
 }
 
 function displayProducts() {
-    const products = JSON.parse(localStorage.getItem("products")) || [];
+
+    // Lưu sản phẩm vào localStorage
+    localStorage.setItem('products', JSON.stringify(products));
+
+    // Lấy sản phẩm từ localStorage
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+
     const productTable = document.querySelector("table");
 
     // Xóa các hàng sản phẩm cũ để làm mới bảng
@@ -74,7 +77,48 @@ function displayProducts() {
 
         productTable.appendChild(row);
     });
+}function displayProducts() {
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const productTable = document.querySelector("table");
+
+    // Xóa các hàng sản phẩm cũ để làm mới bảng
+    productTable.querySelectorAll("tr.product-row").forEach(row => row.remove());
+
+    // Hiển thị sản phẩm từ localStorage
+    products.forEach(product => {
+        const row = document.createElement("tr");
+        row.classList.add("product-row");
+
+        let imageContent = "";
+        if (product.image) {
+            imageContent = `<img src="${product.image}" alt="${product.name}" style="width: 50px; height: auto;">`;
+        } else {
+            imageContent = `<span style="color: red;">Chưa cập nhật ảnh</span>`;
+        }
+
+        // Tạo nội dung cho mỗi ô trong hàng
+        row.innerHTML = `
+            <td>${product.id}</td>
+            <td>${product.caseType}</td>
+            <td>${product.name}</td>
+            <td>${product.model}</td>
+            <td>${imageContent}</td>
+            <td>${formatCurrency(product.price)}</td>
+            <td>${product.quantity}</td>
+            <td>
+                <div class="icon-button">
+                    <i class="fa-solid fa-trash-can icon trash-icon" onclick="showDeleteConfirm('${product.id}')"></i>
+                </div>
+                <div class="icon-button">
+                    <i class="fa-solid fa-pen-to-square icon edit-icon" onclick="showEditProductForm('${product.id}')"></i>
+                </div>
+            </td>
+        `;
+
+        productTable.appendChild(row);
+    });
 }
+
 function displayFilename(){
     const fileInput = document.getElementById("productImage");
     const fileName = fileInput.files[0] ? fileInput.files[0].name : "Chua chon file";
@@ -177,43 +221,32 @@ function saveProducts(){
 
 }
 
-function storeProductData(productCase, productName,productBrand, productModel, productPrice, productQuantity, productDescription, productImagePath, productID) {
-    const formattedPrice = formatCurrency(productPrice);
-
+function storeProductData(productCase, productName, productBrand, productModel, productPrice, productQuantity, productDescription, productImagePath, productID) {
     const newProduct = {
         id: productID,
-        name:productName,
-        caseType: productCase, // Tên dòng ốp lưng
-        brand: productBrand,   // Thương hiệu
-        model: productModel,   // Dòng điện thoại
-        image: productImagePath, // Đường dẫn ảnh
-        price: productPrice, // Giá sản phẩm (chuyển về số)
-        quantity: parseInt(productQuantity), // Số lượng trong kho (chuyển về số)
-        sold: 0, // Số lượng đã bán ban đầu
-        totalRevenue: 0, // Doanh thu tổng cộng ban đầu
-        description:productDescription,
+        name: productName,
+        caseType: productCase,
+        brand: productBrand,
+        model: productModel,
+        image: productImagePath,
+        price: productPrice,
+        quantity: parseInt(productQuantity),
+        sold: 0,
+        totalRevenue: 0,
+        description: productDescription,
     };
 
     const products = JSON.parse(localStorage.getItem("products")) || [];
-    products.push(newProduct);
-    localStorage.setItem("products", JSON.stringify(products));
-
+    products.push(newProduct);  // Thêm sản phẩm mới vào danh sách
+    localStorage.setItem("products", JSON.stringify(products));  // Lưu lại vào localStorage
 
     // Reset form
-    document.getElementById("case").value = "";
-    document.getElementById("productName").value = "";
-    document.getElementById("productBrand").value = "";
-    document.getElementById("productModel").value = "";
-    document.getElementById("productPrice").value = "";
-    document.getElementById("productQuantity").value = "";
-    document.getElementById("productDescription").value = "";
-    document.getElementById("productImage").value = "";
-    document.getElementById("fileNameDisplay").textContent = "";
-
+    clearInputFields();
     alert("Thêm sản phẩm thành công!");
-    displayProducts();
-    showProductList();
+    displayProducts();  // Hiển thị lại danh sách sản phẩm
+    showProductList();  // Quay lại danh sách sản phẩm
 }
+
 
 let productToDelete = null;
 let productToEdit = null;
@@ -228,13 +261,14 @@ document.getElementById("deleteConfirmBox").style.display = "none";
 }
 
 function confirmDelete() {
-// Xóa sản phẩm khỏi localStorage
-let products = JSON.parse(localStorage.getItem("products")) || [];
-products = products.filter(product => product.id !== productToDelete);
-localStorage.setItem("products", JSON.stringify(products));
-displayProducts();  // Cập nhật lại danh sách sản phẩm
-closeDeleteConfirm(); // Đóng hộp xác nhận
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    // Lọc các sản phẩm không trùng với sản phẩm cần xóa
+    products = products.filter(product => product.id !== productToDelete);
+    localStorage.setItem("products", JSON.stringify(products));  // Lưu lại vào localStorage
+    displayProducts();  // Hiển thị lại danh sách sản phẩm
+    closeDeleteConfirm(); // Đóng hộp xác nhận
 }
+
 
 function showEditProductForm(productID) {
 productToEdit = productID;
@@ -343,3 +377,6 @@ document.getElementById("deleteEditImageButton").style.display = "none";
 function closeEditProduct() {
 document.getElementById("editProductBox").style.display = "none";
 }
+window.addEventListener("load", function() {
+    displayProducts();
+});
