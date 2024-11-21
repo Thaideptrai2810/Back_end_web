@@ -4,9 +4,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="trangtongquan.css">
+    <link rel="stylesheet" href="trangsanpham.css">
     <link rel="stylesheet" href="trangthongke.css">
     <link rel="stylesheet" href="tranggiohang.css">
-    <link rel="stylesheet" href="trangsanpham.css">
     <link rel="stylesheet" href="quanlinguoidung.css">
     <link rel="stylesheet" href="bill.css">
     <link rel="stylesheet" href="chitietsanphammodal.css">
@@ -60,15 +60,19 @@
                 Trang tổng quan
             </div>
             
-            <div class="trangtongquan" onclick="navigateTo('customers')" style="padding-right: 63px;">
-                <i class="fa-solid fa-users"></i>
-                Khách hàng
-            </div>
+            
 
             <div class="trangtongquan" onclick="navigateTo('contentsanpham')" style="padding-right: 82px;">
                 <i class="fa-solid fa-cart-shopping"></i>
                 Sản phẩm
             </div>
+            
+
+            <div class="trangtongquan" onclick="navigateTo('customers')" style="padding-right: 63px;">
+                <i class="fa-solid fa-users"></i>
+                Khách hàng
+            </div>
+
             
             <div class="trangtongquan" onclick="navigateTo('cart')" style="padding-right: 85px;">
                 <i class="fa-solid fa-basket-shopping"></i>
@@ -209,66 +213,6 @@
 
 
 
-                <div class="content-section" id="customers">
-
-                    <div class="br_qlnd">
-                        <div class="title-qlnd">
-                            <b>Quản lí người dùng</b>
-                        </div>
-                        <div class="content-qlnd">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID người dùng</th>
-                                        <th>Email</th>
-                                        <th>Số điện thoại</th>
-                                        <th>Địa chỉ</th>
-                                        <th>Chi tiêu</th>
-                                        <th>Tính năng</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Nội dung sẽ được loadUsers() thêm vào đây -->
-                                </tbody>
-                            </table>
-                            
-                        </div>
-                    <!-- Hộp thoại chỉnh sửa người dùng -->
-                  <!-- Hộp thoại chỉnh sửa người dùng -->
-                    <div id="editUserModal" class="modal-qlnd">
-                        <div class="modal-content-qlnd">
-                            <span class="close-qlnd" onclick="closeEditUserModal()">&times;</span>
-                            <h2>Chỉnh sửa người dùng</h2>
-                            <form id="editUserForm">
-                                <div>
-                                    <label>Email:</label>
-                                    <input type="email" id="editEmail" required><br>
-                                </div>
-                                    <label>Số điện thoại:</label>
-                                    <input type="text" id="editPhone"><br>  
-                                <div>
-                                    <label>Địa chỉ:</label>
-                                    <input type="text" id="editAddress"><br>
-                                </div>
-                                <div class="button-group-qlnd">
-                                    <button type="button" onclick="saveUserChanges()">Lưu thay đổi</button>
-                                    <button type="button" onclick="closeEditUserModal()">Hủy</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                
-                
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
 
 
                 <div class="content-section" id="contentsanpham">
@@ -286,29 +230,40 @@
                                 <div style="width: 100%; height: 30%;">
 
                                     <div style="background-color: #fff;padding: 10px;">
-                                        <span onclick="showAddProductForm()">
-                                            <button>
-                                           
+                                        <div class="move" onclick="showAddProductForm()">
+                                            <span >
                                                 <i class="fa-solid fa-plus"></i><span> Thêm sản phẩm </span>
-                                            
-                                            </button>
-                                        </span>
+                                            </span> 
+                                        </div>
+                                        <hr>
 
                                     
                                     
                                     </div>
 
                                     <div style="margin: 15px;background-color: #ffff;width: 97%;border-radius: 3px;padding: 8px;" >
-                                        <table>
+
+                                        <table id="productTable">
+                                            <thead>
                                             <tr>
                                                 <th>Mã sản phẩm</th>
-                                                <th>Tên sản phẩm</th>
+                                                <th>Mẫu ốp lưng</th>
+                                                <th>Tên ốp lưng</th>
+                                                <th>Dòng điện thoại</th>
                                                 <th>Ảnh</th>
                                                 <th>Giá</th>
                                                 <th>Số lượng</th>
                                                 <th>Tính năng</th>
                                             </tr>
+                                        
+                                        </thead>
+                
+                                        <tbody>
+
+                                        </tbody>
+                                        
                                         </table>
+                                        
                                     </div>  
 
                                 </div>
@@ -322,24 +277,38 @@
                         <div class="title_product" style="padding-left: 20px;padding-top: 15px;">
                             <span style="font-size: 25px;"><b>Quản lí sản phẩm / Thêm sản phẩm</span></b>
                         </div>
+
                         <div class="content_sanpham">
+
                             <div class="add-product">
                                 <span>Tạo mới sản phẩm</span>
                             </div>
+
                             <hr class="yellow-line">
                             
-                            
+                             <div class="status">
+                                <span>Thông tin chung</span>
+                            </div>
                             
                            
+                            <hr class="line">
                             <div class="add-product2" style="width: 100%;text-align: center;">
                                 <div class="box">
                                     <div>
-                                        <span>Tên sản phẩm</span>
+                                        <span>Dòng ốp lưng</span>
                                     </div>
                                     <div>
-                                        <input type="text" id="productName" name="productName" >                        
+                                        <select id="case" name="case">
+                                            <option value="" disabled selected>-Chọn loại ốp lưng-</option>
+                                            <option value="Anime">Anime</option>
+                                            <option value="Basketball">Bóng rổ</option>
+                                            <option value="Soccer">Bóng đá</option>
+                                            <option value="Art">Nghệ thuật</option>
+                                        </select>                           
                                     </div>
                                 </div>
+
+
                                 <div class="box">
                                     <div>
                                         <span>Thương hiệu</span>
@@ -349,12 +318,12 @@
                                             <option value="" disabled selected>-Chọn thương hiệu-</option>
                                             <option value="Apple">Apple</option>
                                             <option value="Samsung">Samsung</option>
-                                            <option value="Xiaomi">Xiaomi</option>
-                                            <option value="Oppo">Oppo</option>
-                                            <option value="Vivo">Vivo</option>
+                                           
                                         </select>                        
                                     </div>
                                 </div>
+
+
                                 <div class="box">
                                     <div>
                                         <span>Mẫu điện thoại</span>
@@ -363,8 +332,27 @@
                                         <input type="text" id="productModel" name="productModel">                        
                                     </div>
                                 </div>
+
+
+
                             </div>
+
+                            
                             <div class="add-product2" style="width: 100%;text-align: center;">
+
+                                <div class="box">
+
+                                    <div>
+                                        <span>Tên ốp lưng</span>
+                                    </div>
+
+                                    <div>
+                                        <input type="text" id="productName" name="productName">                        
+                                    </div>
+
+                                </div>
+
+
                                 <div class="box">
                                     <div>
                                         <span>Giá bán</span>
@@ -373,27 +361,35 @@
                                         <input type="text" id="productPrice" name="productPrice">                        
                                     </div>
                                 </div>
+
                                 <div class="box">
+
                                     <div>
                                         <span>Số lượng</span>
                                     </div>
+
                                     <div>
                                         <input type="text" id="productQuantity" name="productQuantity">                        
                                     </div>
+
                                 </div>
+
                             </div>
                             
                             <div>
+
                                 <div class="add-product2" style="margin-top: 10px;">
                                     <span>Ảnh sản phẩm</span>
                                 </div>
+                                
                                 <div class="icon_sanpham">
                                     <!-- Sử dụng <label> để chọn ảnh -->
-                                    <label for="productImage">
-                                        <input type="file" id="productImage" name="productImage" accept="image/*" style="display: none;">
-                                        <i class="fa-solid fa-cloud-arrow-up"></i><span> Chọn Ảnh</span>
-                                    </label>
+                                        <label for="productImage" style="cursor: pointer;">
+                                            <input type="file" id="productImage" name="productImage" accept="image/*" style="display: none;">
+                                            <i class="fa-solid fa-cloud-arrow-up"></i><span> Chọn Ảnh</span>
+                                        </label>
                                 </div>
+
                             </div>
 
                             
@@ -416,12 +412,15 @@
 
 
                             <div class="luuhuy">
+
                                 <div class="huy" onclick="showProductList()">
                                     <i class="fa-solid fa-xmark"></i><span> Hủy</span>
                                 </div>
+
                                 <div class="luu" onclick="saveProducts()">
                                     <i class="fa-solid fa-floppy-disk"></i><span> Lưu</span>
                                 </div>
+
                             </div>
 
 
@@ -429,60 +428,95 @@
 
                     </div>
                     <!-- Hộp xác nhận xóa sản phẩm -->
+                     
                     <div id="deleteConfirmBox">
-                        <p style="margin-bottom: 40px;">Bạn có chắc muốn xóa sản phẩm này?</p>
-                        <button onclick="confirmDelete()">Có</button>
-                        <button onclick="closeDeleteConfirm()">Không</button>
+                        <p>Bạn có chắc muốn xóa sản phẩm này?</p>
+                        <button onclick="confirmDelete()" style="background-color: #f44336; color: white;">Có</button>
+                        <button onclick="closeDeleteConfirm()" style="background-color: #4CAF50; color: white;">Không</button>
                     </div>
                 
                     <!-- Hộp chỉnh sửa sản phẩm -->
                     <div id="editProductBox">
+
                         <h3>Sửa thông tin sản phẩm</h3>
+
                         <div>
-                            <label for="editProductName">Tên sản phẩm</label>
-                            <input type="text" id="editProductName" name="editProductName">
+                            <label for="editProductCase">Loại ốp lưng</label>
+                            <select id="editProductCase" name="editProductCase">
+                                <option value="" disabled selected>-Chọn loại ốp lưng-</option>
+                                <option value="Anime">Anime</option>
+                                <option value="Basketball">Bóng rổ</option>
+                                <option value="Soccer">Bóng đá</option>
+                                <option value="Art">Nghệ thuật</option>
+                            </select>                           
                         </div>
+
                         <div>
                             <label for="editProductBrand">Thương hiệu</label>
                             <select id="editProductBrand" name="editProductBrand">
                                 <option value="Apple">Apple</option>
                                 <option value="Samsung">Samsung</option>
-                                <option value="Xiaomi">Xiaomi</option>
-                                <option value="Oppo">Oppo</option>
-                                <option value="Vivo">Vivo</option>
+                              
                             </select>
                         </div>
+                        
                         <div>
                             <label for="editProductModel">Mẫu điện thoại</label>
                             <input type="text" id="editProductModel" name="editProductModel">
                         </div>
+                        
+                        <div>
+                            <label for="editProductName">Tên ốp lưng</label>
+                            <input type="text" id="editProductName" name="editProductName">
+                        </div>
+
                         <div>
                             <label for="editProductPrice">Giá bán</label>
                             <input type="text" id="editProductPrice" name="editProductPrice">
                         </div>
+
                         <div>
                             <label for="editProductQuantity">Số lượng</label>
                             <input type="text" id="editProductQuantity" name="editProductQuantity">
                         </div>
+
                         <div>
                             <label for="editProductImage" style="margin-bottom: 5px;">Ảnh sản phẩm</label>
                             <input style="margin-bottom: 5px;" type="file" id="editProductImage" name="editProductImage" accept="image/*" onchange="previewEditImage()">
+                            
                             <div id="editImagePreviewContainer">
                                 <img id="editImagePreview" src="" alt="Current Product Image" style="width: 100px; height: auto; display: none;">
                                 <button type="button" onclick="deleteEditImage()" id="deleteEditImageButton" style="display: none;position: relative; right: -50px;">Xóa ảnh</button>
+                            
                             </div>
+
                         </div>
                               
                         <div>
                             <label for="editProductDescription">Mô tả sản phẩm</label>
-                            <input type="text" id="editProductDescription" name="editProductDescription">
+                            <textarea id="editProductDescription" name="editProductDescription"></textarea>
                         </div>
+
+
                         <button onclick="saveEditedProduct()">Lưu</button>
                         <button onclick="closeEditProduct()">Hủy</button>
                     </div>
                 </div>
+
+
                 
 
+
+
+
+
+
+
+
+                <div class="content-section" id="customers">
+
+                    
+                </div>
 
 
 
@@ -713,99 +747,6 @@
                                      <div id="product-details-#DH103880CSS" class="modal2">
                                         <div class="modal-content">
                                             <span class="close-button" onclick="closeProductDetails('#DH103880CSS')">&times;</span>
-
-
-                                            <div class="KhuChiTiet">
-                                                <div class="product_container_chitietsanpham">
-
-                                                    <div class="product_preview" id="product_preview">
-
-                                                        <div class="feature_images">
-                                                            <img src="img/product/Case_anime/iPhone/16Pro_16ProM/ultra_ego_vegeta/magsafe/font.png"
-                                                                alt="Feature Image 1">
-                                                            <img src="img/product/Case_anime/iPhone/16Pro_16ProM/ultra_ego_vegeta/magsafe/site.png"
-                                                                alt="Feature Image 2">
-                                                            <img src="img/product/Case_anime/iPhone/16Pro_16ProM/ultra_ego_vegeta/magsafe/back.png"
-                                                                alt="Feature Image 3">
-                                                        </div>
-
-
-                                                        <div class="main_image">
-                                                            <img src="img/product/Case_anime/iPhone/16Pro_16ProM/ultra_ego_vegeta/magsafe/font.png"
-                                                                alt="Main Image 1">
-                                                        </div>
-
-                                                        <div class="product_details">
-
-
-                                                            <div class="title_group">
-
-                                                                <div class="Info">
-                                                                    <h1>
-                                                                        iPhone Case
-                                                                    </h1>
-                                                                </div>
-
-
-                                                                <div class="Price">
-                                                                    <h2>35000</h2>
-                                                                </div>
-
-                                                            </div>
-
-
-                                                            <div class="model_selector_chitietsanpham">
-                                                                <label class="label_name_chitietsanpham">Model: <span id="model_name"></span></label>
-                                                                <div class="model_buttons_chitietsanpham">
-                                                                    <button class="model_option_chitietsanpham" data-model="soft_case" selected>Soft Case</button>
-                                                                    
-                                                                </div>
-                                                            </div>
-
-
-                                                
-
-
-                                                        </div>                
-                                                        
-                                                        <div class="product_features">
-
-                                                            <h3>Product Features</h3>
-                                                            <ul>
-                                                                <li>Weight 30g</li>
-                                                                <li>Thickness 1/8 inch (3mm)</li>
-                                                                <li>Since every item is made just for you by your local third-party fulfiller, there may be
-                                                                    slight
-                                                                    variances in the product received</li>
-                                                            </ul>
-
-                                                        </div>
-
-
-
-                                                        
-
-
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-
-
-
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <!-- Modal Chi tiết sản phẩm -->
-                                     <div id="product-details-#DH103881CSS" class="modal2">
-                                        <div class="modal-content">
-                                            <span class="close-button" onclick="closeProductDetails('#DH103881CSS')">&times;</span>
 
 
                                             <div class="KhuChiTiet">
@@ -1579,11 +1520,12 @@
 </div>
 
 
-    <script src="admin.js"></script>
-    <script src="trangthongke.js"></script>
-    <script src="tranggiohang.js"></script>
+    <script src="admin.js"></script> 
     <script src="trangsanpham.js"></script>
     <script src="quanlinguoidung.js"></script>
+    <script src="tranggiohang.js"></script>
+    <script src="trangthongke.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script src="product_detail.js"></script>
 
 
