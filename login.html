@@ -2,11 +2,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Đăng nhập admin</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
     <style>
       @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
       
@@ -253,23 +255,29 @@
         height: 40px;
         width: 40px;
       }
+      .thongtinshop{
+        position: relative;
+        height:80%;
+        width: 100%;
+        padding-top: 30px;
+        text-align: left;
+      }
     </style>
   </head>
   <body>
     <div class="container" id="container">
       <div class="form-container sign-up-container">
         <form action="#">
-          <h1>Create Account</h1>
-          <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-          <span>or use your email for registration</span>
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <button>Sign Up</button>
+          <h1 style="padding-top: 8px;"> SLIM CASE</h1>
+            <div class="thongtinshop">Dưới sự dẫn dắt của anh và SGU, Slim Case đã đạt được nhiều thành tựu nổi bật:
+                Doanh số tăng 50% trong 6 tháng qua nhờ các mẫu ốp lưng độc quyền.
+                Mở thêm 2 chi nhánh mới, mở rộng thị trường thành công.
+                Hơn 95% khách hàng đánh giá 5 sao về dịch vụ và sản phẩm.
+                Chiến dịch khuyến mãi hiệu quả, giúp tăng doanh thu mạnh trong các dịp cao điểm.
+                Đội ngũ nhân viên chuyên nghiệp, nâng cao trải nghiệm khách hàng.
+                Tất cả những điều này minh chứng cho sự phát triển bền vững của Slim Case! 🚀👏
+
+            </div>
         </form>
       </div>
       <div class="form-container sign-in-container">
@@ -292,36 +300,81 @@
           <div class="overlay-panel overlay-left">
             <h1>Welcome Back!</h1>
             <p>
-              To keep connected with us please login with your personal info
+              Xong rồi nhớ đăng nhập và làm việc nhé!
             </p>
             <button class="ghost" id="signIn">Sign In</button>
           </div>
           <div class="overlay-panel overlay-right">
-            <h1>Hello, Friend!</h1>
-            <p>Enter your personal details and start journey with us</p>
-            <button class="ghost" id="signUp">Sign Up</button>
+            <h1>Hi, sir!</h1>
+            <p>Bạn có muốn xem lại thành tựu của chúng ta không ?</p>
+            <button class="ghost" id="signUp">Absolutely!</button>
           </div>
         </div>
       </div>
     </div>
-    <script>
-      const signUpButton = document.getElementById("signUp");
-      const signInButton = document.getElementById("signIn");
-      const container = document.getElementById("container");
 
-      signUpButton.addEventListener("click", () => {
-        container.classList.add("right-panel-active");
-      });
-
-      signInButton.addEventListener("click", () => {
-        container.classList.remove("right-panel-active");
-      });
-    </script>
     <script>
-      window.addEventListener("load", function () {
-        document.body.style.backgroundSize = "20%"; // Set the final size
-      });
-      document.querySelector(".container").style.marginBottom = "0";
-    </script>
+    // Lấy các phần tử từ giao diện
+const signUpButton = document.getElementById("signUp");
+const signInButton = document.getElementById("signIn");
+const container = document.getElementById("container");
+
+// Xử lý chuyển đổi giao diện giữa Sign In và Sign Up
+signUpButton.addEventListener("click", () => {
+  container.classList.add("right-panel-active");
+  document.title = "Sign Up"; // Cập nhật tiêu đề
+});
+
+signInButton.addEventListener("click", () => {
+  container.classList.remove("right-panel-active");
+  document.title = "Sign In"; // Cập nhật tiêu đề
+});
+
+// Xử lý form đăng nhập
+document.querySelector(".sign-in-container form").addEventListener("submit", (e) => {
+  e.preventDefault(); // Ngăn gửi form mặc định
+
+  // Lấy dữ liệu từ form đăng nhập
+  const email = document.querySelector(".sign-in-container input[type='email']").value.trim();
+  const password = document.querySelector(".sign-in-container input[type='password']").value.trim();
+
+  // Tài khoản admin mẫu
+  const adminAccount = {
+    email: "admin@gmail.com",
+    password: "admin123",
+  };
+
+  // Kiểm tra thông tin đăng nhập
+  if (email === adminAccount.email && password === adminAccount.password) {
+    
+    window.location.href = "admin.html"; // Chuyển sang trang admin
+  } else {
+    alert("Email hoặc mật khẩu không đúng. Vui lòng thử lại.");
+  }
+});
+
+// Xử lý form đăng ký
+document.querySelector(".sign-up-container form").addEventListener("submit", (e) => {
+  e.preventDefault(); // Ngăn gửi form mặc định
+
+  // Lấy thông tin từ form đăng ký
+  const name = document.querySelector(".sign-up-container input[placeholder='Name']").value.trim();
+  const email = document.querySelector(".sign-up-container input[placeholder='Email']").value.trim();
+  const password = document.querySelector(".sign-up-container input[placeholder='Password']").value.trim();
+
+  if (!name || !email || !password) {
+    alert("Vui lòng điền đầy đủ thông tin.");
+    return;
+  }
+
+  // Thông báo hiện tại chỉ hỗ trợ demo
+  alert("Đăng ký thành công! Nhưng chức năng này chưa được triển khai thực tế.");
+});
+
+// Hiệu ứng thay đổi hình nền sau khi tải trang
+window.addEventListener("load", function () {
+  document.body.style.backgroundSize = "20%"; // Thiết lập kích thước cuối
+});
+</script>
   </body>
 </html>

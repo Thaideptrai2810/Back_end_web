@@ -208,7 +208,12 @@ body {
     text-align: center; /* Căn giữa */
     cursor: pointer;
 }
-
+.logout:hover{
+    cursor: pointer;
+}
+.header-right:hover{
+    cursor: pointer;
+}
 
 .container{
     display: flex;
@@ -256,12 +261,12 @@ body {
     /* Khi sidebar mở */
     .sidebar.open {
       display: block; /* Hiển thị sidebar khi thêm class 'open' */
-      z-index: 100;
+      z-index: 100; 
     }
 
     /* Xoay icon khi sidebar mở */
     .menu-icon.rotate {
-        transform: rotate(180deg); /* Xoay icon 180 độ */
+        transform: rotate(90deg); /* Xoay icon 180 độ */
     }
     .logo-container {
         font-size: 20px;

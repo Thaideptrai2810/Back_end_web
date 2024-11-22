@@ -111,10 +111,10 @@ const incomeChart = new Chart(ctx, {
 const chartContext = document.getElementById('myPieChart').getContext('2d');
 
 const data = {
-    labels: ['Oppo', 'iPhone', 'Samsung'],
+    labels: [ 'iPhone', 'Samsung'],
     datasets: [{
         label: 'Tổng quan lượt bán',
-        data: [10, 20, 70],
+        data: [30, 70],
         backgroundColor: [
             'rgba(255, 99, 132, 0.7)',
             'rgba(54, 162, 235, 0.7)',

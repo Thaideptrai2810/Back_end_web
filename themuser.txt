@@ -1,0 +1,20 @@
+// Lấy danh sách người dùng hiện tại từ Local Storage
+let users = JSON.parse(localStorage.getItem('users')) || [];
+
+// Tạo người dùng mới
+let newUser = {
+    id: users.length + 1, // Tăng ID tự động
+    email: "newuser@example.com",
+    phone: "0123456789",
+    address: "123 Main Street",
+    spending: 0,
+    status: "unlocked"
+};
+
+// Thêm người dùng mới vào danh sách
+users.push(newUser);
+
+// Lưu danh sách người dùng lại vào Local Storage
+localStorage.setItem('users', JSON.stringify(users));
+
+console.log("Người dùng mới đã được thêm:");

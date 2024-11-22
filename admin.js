@@ -72,3 +72,23 @@ function closeSidebar() {
 }
 
 
+
+// Xử lý đăng xuất
+document.getElementById("logoutadmin").addEventListener("click", function() {
+    // Xóa thông tin đăng nhập khỏi localStorage
+    localStorage.removeItem("user");
+
+    // Chuyển hướng về trang login
+    window.location.href = "login.html"; // Thay đổi với đường dẫn của trang đăng nhập
+});
+
+
+// Xử lý đăng xuất
+document.getElementById("logoutAdmin").addEventListener("click", function() {
+    // Xóa thông tin đăng nhập khỏi localStorage
+    localStorage.removeItem("user");
+
+    // Chuyển hướng về trang login
+    window.location.href = "login.html"; // Thay đổi với đường dẫn của trang đăng nhập
+});
+

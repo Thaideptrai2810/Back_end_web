@@ -32,11 +32,11 @@
                 <td>${addressDisplay}</td>
                 <td>${user.spending}</td>
                 <td>
-                    <div class="tinhnang">
-                        <div class="icon" onclick="promptToggleUserStatus(${user.id}, this)">
+                    <div class="tinhnang-qlnd">
+                        <div class="icon-qlnd" onclick="promptToggleUserStatus(${user.id}, this)">
                             <i class="fa-solid ${user.status === 'unlocked' ? 'fa-lock-open' : 'fa-lock'}"></i>
                         </div>
-                        <div class="icon" onclick="editUser(${user.id})">
+                        <div class="icon-qlnd" onclick="editUser(${user.id})">
                             <i class="fa-solid fa-user-pen"></i>
                         </div>
                     </div>

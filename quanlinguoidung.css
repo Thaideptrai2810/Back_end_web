@@ -43,11 +43,13 @@ tr:hover {
 .icon-qlnd{
     border-radius: 5px;
     cursor: pointer;
-    background-color: #005df0;
+    background: linear-gradient(45deg, rgba(73, 72, 72, 0.8), rgba(17, 0, 0, 0.974)); 
     padding: 3px;
     color: white;
 
 }
+
+
 .tinhnang-qlnd{
     display: flex;
     gap: 5px;
@@ -110,7 +112,7 @@ tr:hover {
 .button-group-qlnd {
     display: flex;
     justify-content: center; /* Căn giữa các nút */
-    gap: 10px; /* Khoảng cách giữa các nút */
+    gap: 30px; /* Khoảng cách giữa các nút */
     margin-top: 10px;
 }
 

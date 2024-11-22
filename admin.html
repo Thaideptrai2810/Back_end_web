@@ -31,7 +31,8 @@
         <div class="header-logo">
             administrator
         </div>
-        <div class="header-right">
+        
+        <div class="header-right" id="logoutadmin">
             <i class="fa-solid fa-user"></i> Đăng xuất
         </div>
     </header>
@@ -92,11 +93,13 @@
 
 
             
-            <div class="logout">
-                <a href="#" class="no-underlinefont" style="color: white;">
+            <div class="logout" id="logoutAdmin">
+                
                     <i class="fa-solid fa-sign-out-alt"></i> Đăng xuất
-                </a>
+               
             </div>
+
+
         </div>
 
 
@@ -231,11 +234,13 @@
                                 <div style="width: 100%; height: 30%;">
 
                                     <div style="background-color: #fff;padding: 10px;">
+
                                         <div class="move" onclick="showAddProductForm()">
                                             <span >
                                                 <i class="fa-solid fa-plus"></i><span> Thêm sản phẩm </span>
                                             </span> 
                                         </div>
+
                                         <hr>
 
                                     
@@ -404,7 +409,7 @@
 
 
                             <div>  
-                                <input type="text" id="productDescription" name="productDescription" style="height:100px;">
+                                <textarea id="productDescription" name="productDescription" placeholder="Nhập mô tả sản phẩm" style="height:100px;"></textarea>
                             </div>
                             
                             
@@ -563,7 +568,7 @@
                                     <div><label>Email:</label><input type="email" id="editEmail" required><br></div>
                                     <div><label>Số điện thoại:</label><input type="text" id="editPhone"><br></div>
                                     <div><label>Địa chỉ:</label><input type="text" id="editAddress"><br></div>
-                                    <div class="button-group">
+                                    <div class="button-group-qlnd">
                                         <button type="button" onclick="saveUserChanges()">Lưu thay đổi</button>
                                         <button type="button" onclick="closeEditUserModal()">Hủy</button>
                                     </div>
@@ -652,10 +657,10 @@
                                                     </select>
                                             
                 
-                                                    <button id="filter-button" style="margin-top: 25px;">Lọc</button>
+                                                    <button id="filter-button" style="margin-top: 25px; margin-left:0px;">Lọc</button>
                 
                 
-                                                    <button id="clear-filters-button">Xóa điều kiện lọc</button>
+                                                    <button id="clear-filters-button" style="margin-left: 0px;">Xóa điều kiện lọc</button>
                                                 </div>
                                             </div>
                                             
@@ -797,6 +802,111 @@
                     </div>
                   
                 </div>
+
+
+
+
+
+                                    <!-- Modal Chi tiết sản phẩm -->
+                                    <div id="product-details-#DH103881CSS" class="modal2">
+
+
+                                        <div class="modal-content">
+                                            <span class="close-button" onclick="closeProductDetails('#DH103881CSS')">&times;</span>
+
+
+                                            
+                                            
+                                            
+                                            <div class="KhuChiTiet">
+                                                <div class="product_container_chitietsanpham">
+
+                                                    <div class="product_preview" id="product_preview">
+
+                                                        <div class="feature_images">
+                                                            <img src="img/Dual Grip Mag/detail_ip_DualGripMag_black_01.jpg"
+                                                                alt="Feature Image 1">
+                                                            <img src="img/Dual Grip Mag/detail_ip_DualGripMag_black_02.jpg"
+                                                                alt="Feature Image 2">
+                                                            <img src="img/Dual Grip Mag/detail_ip_DualGripMag_black_03.jpg"
+                                                                alt="Feature Image 3">
+                                                        </div>
+
+
+                                                        <div class="main_image">
+                                                            <img src="img/Dual Grip Mag/detail_ip_DualGripMag_black_01.jpg"
+                                                                alt="Main Image 1">
+                                                        </div>
+
+                                                        <div class="product_details">
+
+
+                                                            <div class="title_group">
+
+                                                                <div class="Info">
+                                                                    <h1>
+                                                                        iPhone Case
+                                                                    </h1>
+                                                                </div>
+
+
+                                                                <div class="Price">
+                                                                    <h2>35000</h2>
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            <div class="model_selector_chitietsanpham">
+                                                                <label class="label_name_chitietsanpham">Model: <span id="model_name"></span></label>
+                                                                <div class="model_buttons_chitietsanpham">
+                                                                    <button class="model_option_chitietsanpham" data-model="soft_case" selected style="padding-top: 3px;">Soft Case</button>
+                                                                    
+                                                                </div>
+                                                            </div>
+
+
+                                                
+
+
+                                                        </div>                
+                                                        
+                                                        <div class="product_features">
+
+                                                            <h3>Product Features</h3>
+                                                            <ul>
+                                                                <li>Weight 30g</li>
+                                                                <li>Thickness 1/8 inch (3mm)</li>
+                                                                <li>Since every item is made just for you by your local third-party fulfiller, there may be
+                                                                    slight
+                                                                    variances in the product received</li>
+                                                            </ul>
+
+                                                        </div>
+
+
+
+                                                        
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
 
 
 
@@ -1527,31 +1637,11 @@
                                                 IPHONE
                                             </td>
                                             <td>
-                                                20
+                                                30
                                             </td>
                                         </tr>
 
-                                        <tr>
-                                            <td>OPPO</td>
-                                            <td>10</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>VIVO</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>VIVO</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>VIVO</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>VIVO</td>
-                                            <td>0</td>
-                                        </tr>
+                    
 
                                       </tbody>
                                    </table>

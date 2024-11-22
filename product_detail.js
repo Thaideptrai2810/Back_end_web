@@ -3,14 +3,37 @@ function vnd(price) {
     return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 }
 
-// Hàm khởi tạo preview sản phẩm
+document.addEventListener("DOMContentLoaded", () => {
+    // Chọn tất cả các khu chi tiết
+    const productContainers = document.querySelectorAll('.KhuChiTiet .product_preview');
+
+    productContainers.forEach(product => {
+        // Khởi tạo cho mỗi sản phẩm
+        initializeProductPreview(product);
+    });
+
+    // Xử lý model nếu có
+    const modelButtons = document.querySelectorAll(".model_option_chitietsanpham");
+    const modelName = document.getElementById("model_name");
+
+    if (modelButtons.length && modelName) {
+        initializeModelSelection(modelButtons, modelName);
+    }
+});
+
 function initializeProductPreview(product) {
     const ftImg = product.querySelectorAll(".feature_images img");
     const mainImg = product.querySelector(".main_image img");
 
+    if (!ftImg.length || !mainImg) {
+        console.error("Không tìm thấy ảnh feature hoặc ảnh chính!");
+        return;
+    }
+
     // Gắn sự kiện click cho ảnh feature
-    ftImg.forEach(img => {
+    ftImg.forEach((img, index) => {
         img.addEventListener("click", () => {
+            console.log(`Click vào ảnh thứ ${index + 1}:`, img.src);
             mainImg.src = img.src; // Cập nhật ảnh chính
 
             // Loại bỏ lớp 'selected' khỏi tất cả ảnh feature
@@ -28,7 +51,6 @@ function initializeProductPreview(product) {
     }
 }
 
-// Hàm khởi tạo model
 function initializeModelSelection(modelButtons, modelName) {
     // Gắn sự kiện click cho các nút model
     modelButtons.forEach(button => {
@@ -43,13 +65,12 @@ function initializeModelSelection(modelButtons, modelName) {
             modelName.innerText = button.innerText;
         });
     });
-
-    // Mặc định click vào nút "Soft Case"
-    const firstClickedBtn = document.querySelector('[data-model]');
-    if (firstClickedBtn) {
-        firstClickedBtn.click();
-    }
 }
+
+
+
+
+
 
 
 
