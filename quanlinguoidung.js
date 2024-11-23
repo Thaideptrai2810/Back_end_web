@@ -17,14 +17,17 @@
         userTable.innerHTML = ''; // Xóa hết dữ liệu cũ trong bảng
 
         users.forEach(user => {
-            // Kiểm tra số điện thoại và địa chỉ để hiển thị
-            const phoneDisplay = user.phone || `<span style="color: red; font-style: italic;">Chưa cập nhật</span>`;
-            const addressDisplay = user.address || `<span style="color: red; font-style: italic;">Chưa cập nhật</span>`;
-
-            // Tạo một hàng mới cho người dùng
-            const row = document.createElement("tr");
-            row.classList.add("user-row");
-
+            // Kiểm tra số điện thoại
+            const phoneDisplay = user.phone 
+                ? user.phone 
+                : `<span style="color: red; font-style: italic;">Chưa cập nhật</span>`;
+    
+            // Kiểm tra địa chỉ
+            const addressDisplay = user.address 
+                ? user.address 
+                : `<span style="color: red; font-style: italic;">Chưa cập nhật</span>`;
+    
+            const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${user.id}</td>
                 <td>${user.email}</td>
@@ -84,6 +87,7 @@
 
     // Mở hộp thoại chỉnh sửa thông tin người dùng
     function editUser(userId) {
+        
         const users = getUsersFromLocalStorage(); // Lấy người dùng từ localStorage
         const user = users.find(u => u.id === userId);
 
@@ -91,7 +95,10 @@
             currentUserId = userId;
             document.getElementById("editEmail").value = user.email;
             document.getElementById("editPhone").value = user.phone || '';
-            document.getElementById("editAddress").value = user.address || '';
+            document.getElementById("editCity").value = user.city || '';
+            document.getElementById("editDistrict").value = user.district || '';
+            document.getElementById("editWard").value = user.ward || '';
+            document.getElementById("editStreet").value = user.street || '';
             document.getElementById("editUserModal").style.display = "flex";
         }
     }
@@ -109,8 +116,13 @@
         if (user) {
             user.email = document.getElementById("editEmail").value;
             user.phone = document.getElementById("editPhone").value;
-            user.address = document.getElementById("editAddress").value;
-
+            user.city = document.getElementById("editCity").value;
+            user.district = document.getElementById("editDistrict").value;
+            user.ward = document.getElementById("editWard").value;
+            user.street = document.getElementById("editStreet").value;
+            
+            user.address = `${user.street}, ${user.ward}, ${user.district}, ${user.city}`;
+            
             saveUsersToLocalStorage(users); // Lưu thay đổi vào localStorage
             loadUsers(); // Cập nhật lại bảng người dùng
             closeEditUserModal(); // Đóng modal chỉnh sửa

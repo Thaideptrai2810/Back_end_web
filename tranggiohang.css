@@ -273,8 +273,8 @@ a:hover {
     cursor: pointer;
 }
 
-.right_right_search_contentgiohang:hover {
-    cursor: pointer;
+.right_right_search_contentgiohang{
+    display: none;
 }
 
 .listdonhang{

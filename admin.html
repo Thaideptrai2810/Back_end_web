@@ -565,9 +565,64 @@
                                 <span class="close-qlnd" onclick="closeEditUserModal()">&times;</span>
                                 <h2>Chỉnh sửa người dùng</h2>
                                 <form id="editUserForm">
-                                    <div><label>Email:</label><input type="email" id="editEmail" required><br></div>
-                                    <div><label>Số điện thoại:</label><input type="text" id="editPhone"><br></div>
-                                    <div><label>Địa chỉ:</label><input type="text" id="editAddress"><br></div>
+
+
+                                    <!-- Email -->
+                                    <div>
+                                        <label>Email:</label>
+                                        <input type="email" id="editEmail" required><br>
+                                    </div>   
+                                    
+                                    <!-- Số điện thoại -->
+                                    <div>
+                                        <label>Số điện thoại:</label>
+                                        <input type="text" id="editPhone"><br>
+                                    </div>   
+                                    
+                                    <!-- Địa chỉ -->
+                                    <h3>Địa chỉ:</h3>
+                                    <div>
+                                        <label>Tỉnh/Thành phố:</label>
+                                        <select id="editCity">
+                                            <option value="">Chọn tỉnh/thành phố</option>
+                                            <option value="TP.Hồ Chí Minh">TP.Hồ Chí Minh</option>
+                                            <!-- Thêm các thành phố khác nếu cần -->
+                                        </select><br>
+                                    </div>
+                                    <div>
+                                        <label>Quận/Huyện:</label>
+                                        <select id="editDistrict">
+                                            <option value="">Chọn quận/huyện</option>
+                                            <option value="Quận 1">Quận 1</option>
+                                            <option value="Quận 3">Quận 3</option>
+                                            <option value="Quận 5">Quận 5</option>
+                                            <option value="Quận 7">Quận 7</option>
+                                            <!-- Thêm các quận/huyện khác nếu cần -->
+                                        </select><br>
+                                    </div>
+                                    <div>
+                                        <label>Phường/Xã:</label>
+                                        <select id="editWard">
+                                            <option value="">Chọn phường/xã</option>
+                                            <option value="Phường 1">Phường 1</option>
+                                            <option value="Phường 2">Phường 2</option>
+                                            <option value="Phường 3">Phường 3</option>
+                                            <option value="Phường 4">Phường 4</option>
+                                            <option value="Phường 5">Phường 5</option>
+                                            <!-- Thêm các phường/xã khác nếu cần -->
+                                        </select><br>
+                                    </div>
+
+
+
+
+                                    <div>
+                                        <label>Số nhà, Đường:</label>
+                                        <input type="text" id="editStreet"><br>
+                                    </div>
+
+
+                                    
                                     <div class="button-group-qlnd">
                                         <button type="button" onclick="saveUserChanges()">Lưu thay đổi</button>
                                         <button type="button" onclick="closeEditUserModal()">Hủy</button>
@@ -672,9 +727,7 @@
                                             
                 
                 
-                                            <div class="right_search_contentgiohang">
-                                                <input type="text" id="search-input" placeholder="Tìm kiếm..." />
-                                            </div>
+                                            
                                             <div class="right_right_search_contentgiohang">
                                                <i id="search-button" class="fa-solid fa-magnifying-glass"></i>
                                             </div>
