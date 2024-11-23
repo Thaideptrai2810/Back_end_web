@@ -1,4 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
 
+    // Nếu chưa đăng nhập, chuyển về trang login
+    if (!isLoggedIn || isLoggedIn !== "true") {
+        alert("Bạn cần đăng nhập để truy cập trang này!");
+        window.location.href = "login.html";
+    }
+});
 
 
 

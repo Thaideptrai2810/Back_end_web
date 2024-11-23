@@ -612,9 +612,9 @@
                                 </div>
                                 <div class="content_contentgiohang">
                 
-
-
-
+                
+                
+                
                 
                                     <div class="content_contentgiohang_section" id="tatcadonhang" >
                                         
@@ -638,29 +638,34 @@
                                                     <label for="end-date">Ngày kết thúc:</label>
                                                     <input type="date" id="end-date">
                                             
+                                                    
+                                                    <label for="district">Quận:</label>
+                                                        <select id="district">
+                                                            <option value="">Tất cả</option>
+                                                            <option value="Quận 1">Quận 1</option>
+                                                            <option value="Quận 2">Quận 2</option>
+                                                            <option value="Quận 3">Quận 3</option>
+                                                            <option value="Quận 4">Quận 4</option>
+                                                            <!-- Thêm các quận khác tại đây -->
+                                                        </select>
                 
                 
-                                                    <label for="order-status">Trạng thái đơn hàng:</label>
+                
+                                                    <label for="order-status">Tình trạng đơn hàng:</label>
                                                     <select id="order-status">
-                                                        <option value="">Tất cả trạng thái</option>
-                                                        <option value="processing">Chưa xử lý</option>
-                                                        <option value="completed" >Đã xác nhận</option>
-                                                        <option value="pending">Đã giao hàng</option>
+                                                        <option value="">Tất cả</option>
+                                                        <option value="Chưa xử lý">Chưa xử lý</option>
+                                                        <option value="Chưa giao hàng" >Chưa giao hàng</option>
+                                                        <option value="Đã giao hàng">Đã giao hàng</option>
+                                                        <option value="Đã hủy">Đã hủy</option>
                                                     </select>
                                             
                 
-                                                    <label for="district-filter">Quận:</label>
-                                                    <select id="district-filter">
-                                                        <option value="">Quận 1</option>
-                                                        <option value="">Quận Tân Phú</option>
-                                                        <!-- Các quận sẽ được liệt kê ở đây -->
-                                                    </select>
+                                                    
                                             
                 
-                                                    <button id="filter-button" style="margin-top: 25px; margin-left:0px;">Lọc</button>
+                                                    <button id="clear-filters-button" onclick="resetFilters()" style="margin-left: 0px;">Xóa điều kiện lọc</button>
                 
-                
-                                                    <button id="clear-filters-button" style="margin-left: 0px;">Xóa điều kiện lọc</button>
                                                 </div>
                                             </div>
                                             
@@ -678,9 +683,9 @@
                                         
                 
                                        <div class="listdonhang">
-
+                
                     <div class="table-listdonhang">
-                        <table>
+                        <table id="orders">
                             <thead>
                                 <tr>
                                     <th>Mã</th>
@@ -693,113 +698,140 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103881CSS')">#DH103881CSS</a></td> 
-                                    <td>01/11/2024</td>
-                                    <td>Lam San</td>
-                                    <td>Quận Tân Phú</td>
-                                    <td>62,000 ₫</td>
-                                    <td><span class="status processing"><a href="javascript:void(0);" onclick="navigateTo_giohang('chuaxuly')">Chưa xử lý</a></span></td>
-                                    <td>
-                                        <div class="thaotac">
-                                            <div class="xacnhantren"> Xác nhận xử lý
-                
-                                            </div>
-                                            <div class="xacnhanduoi">
-                
-                                            
-                                            <div class="dongyxacnhan">Đồng ý
-                
-                                            </div>
-                                            <div class="huyxacnhan">Hủy
-                
-                                            </div>
-                                        
-                                        </div>
-                
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="javascript:void(0);" onclick="showProductDetails('#DH103880CSS')">#DH103880CSS</a></td>
-
-
-
-
-
-                                    <td>02/11/2024</td>
-                                    <td>Nguyễn Thanh</td>
-                                    <td>Quận 5</td>
-                                    <td>250,000 ₫</td>
-                                    <td><span class="status pending">Chưa giao hàng</span></td>
-                                    <td>
-                                        <div class="thaotac">
-                                            <div class="xacnhantren"> Xác nhận giao hàng
-                
-                                            </div>
-                                            <div class="xacnhanduoi">
-                
-                                            
-                                            <div class="dongyxacnhan">Đồng ý
-                
-                                            </div>
-                                            <div class="huyxacnhan">Hủy
-                
-                                            </div>
-                                        
-                                        </div>
-                
-                                        </div>
-                                    </td>
-                                </tr>
+                                
+                                
+                                
                             </tbody>
                         </table>
-
-
-
-
+                
+                
+                
+                
                        
                                 
-
-
-
-
+                
+                
+                
+                
                     </div>
                 </div>
                 
                                     </div>
                 
-
-
+                
+                
                                    
                                     <div class="content_contentgiohang_section" id="chuaxuly" >
-                                       chua xu ly
+                                        <table id="donhangchuaxuly">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã</th>
+                                                    <th>Ngày</th>
+                                                    <th>Tên</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Tổng tiền</th>
+                                                    <th>Tình trạng</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                            </tbody>
+                                        </table>
                                     </div>
-
-
-
+                
+                
+                
+                
+                
                                     <div class="content_contentgiohang_section" id="daxacnhan" >
-                                        da xac nhan
+                
+                
+                                        <table id="donhangdaxacnhan">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã</th>
+                                                    <th>Ngày</th>
+                                                    <th>Tên</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Tổng tiền</th>
+                                                    <th>Tình trạng</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                
+                                            </tbody>
+                                        </table>
                                     </div>
-
-
-
-
+                
+                
+                
+                
+                
+                
                                     <div class="content_contentgiohang_section" id="dagiao" >
-                                        da giao
+                
+                                        <table id="donhangdagiao">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã</th>
+                                                    <th>Ngày</th>
+                                                    <th>Tên</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Tổng tiền</th>
+                                                    <th>Tình trạng</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                
+                                            </tbody>
+                                        </table>
                                     </div>
+                
+                
+                
                                     
-
+                
+                
+                
                                     <div class="content_contentgiohang_section" id="dahuy" >
-                                        da huy
+                
+                
+                                       <table id="donhangdahuy">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã</th>
+                                                    <th>Ngày</th>
+                                                    <th>Tên</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Tổng tiền</th>
+                                                    <th>Tình trạng</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                
+                                            </tbody>
+                                       </table>
+                
                                     </div>
+                
+                                    
                 
                                 </div>
                 
                             </div>
                 
                         </div>
+                    <!-- Cuối phần body -->
+                <div id="modal"></div>
+                
                     </div>
+
+
+                    
                   
                 </div>
 
@@ -807,198 +839,14 @@
 
 
 
-                                    <!-- Modal Chi tiết sản phẩm -->
-                                    <div id="product-details-#DH103881CSS" class="modal2">
+                                    
 
 
-                                        <div class="modal-content">
-                                            <span class="close-button" onclick="closeProductDetails('#DH103881CSS')">&times;</span>
 
 
-                                            
-                                            
-                                            
-                                            <div class="KhuChiTiet">
-                                                <div class="product_container_chitietsanpham">
 
-                                                    <div class="product_preview" id="product_preview">
 
-                                                        <div class="feature_images">
-                                                            <img src="img/Dual Grip Mag/detail_ip_DualGripMag_black_01.jpg"
-                                                                alt="Feature Image 1">
-                                                            <img src="img/Dual Grip Mag/detail_ip_DualGripMag_black_02.jpg"
-                                                                alt="Feature Image 2">
-                                                            <img src="img/Dual Grip Mag/detail_ip_DualGripMag_black_03.jpg"
-                                                                alt="Feature Image 3">
-                                                        </div>
-
-
-                                                        <div class="main_image">
-                                                            <img src="img/Dual Grip Mag/detail_ip_DualGripMag_black_01.jpg"
-                                                                alt="Main Image 1">
-                                                        </div>
-
-                                                        <div class="product_details">
-
-
-                                                            <div class="title_group">
-
-                                                                <div class="Info">
-                                                                    <h1>
-                                                                        iPhone Case
-                                                                    </h1>
-                                                                </div>
-
-
-                                                                <div class="Price">
-                                                                    <h2>35000</h2>
-                                                                </div>
-
-                                                            </div>
-
-
-                                                            <div class="model_selector_chitietsanpham">
-                                                                <label class="label_name_chitietsanpham">Model: <span id="model_name"></span></label>
-                                                                <div class="model_buttons_chitietsanpham">
-                                                                    <button class="model_option_chitietsanpham" data-model="soft_case" selected style="padding-top: 3px;">Soft Case</button>
-                                                                    
-                                                                </div>
-                                                            </div>
-
-
-                                                
-
-
-                                                        </div>                
-                                                        
-                                                        <div class="product_features">
-
-                                                            <h3>Product Features</h3>
-                                                            <ul>
-                                                                <li>Weight 30g</li>
-                                                                <li>Thickness 1/8 inch (3mm)</li>
-                                                                <li>Since every item is made just for you by your local third-party fulfiller, there may be
-                                                                    slight
-                                                                    variances in the product received</li>
-                                                            </ul>
-
-                                                        </div>
-
-
-
-                                                        
-
-
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-
-
-
-
-
-
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-                                     <!-- Modal Chi tiết sản phẩm -->
-                                     <div id="product-details-#DH103880CSS" class="modal2">
-                                        <div class="modal-content">
-                                            <span class="close-button" onclick="closeProductDetails('#DH103880CSS')">&times;</span>
-
-
-                                            <div class="KhuChiTiet">
-                                                <div class="product_container_chitietsanpham">
-
-                                                    <div class="product_preview" id="product_preview">
-
-                                                        <div class="feature_images">
-                                                            <img src="img/A Frog and His Son/iPhone11_A_Frog_And_His_Son.webp"
-                                                                alt="Feature Image 1">
-                                                            <img src="img/A Frog and His Son/iPhone12_A_Frog_And_His_Son_Feature1.webp"
-                                                                alt="Feature Image 2">
-                                                            <img src="img/A Frog and His Son/iPhone12_A_Frog_And_His_Son_Feature2.webp"
-                                                                alt="Feature Image 3">
-                                                        </div>
-
-
-                                                        <div class="main_image">
-                                                            <img src="img/A Frog and His Son/iPhone11_A_Frog_And_His_Son.webp"
-                                                                alt="Main Image 1">
-                                                        </div>
-
-                                                        <div class="product_details">
-
-
-                                                            <div class="title_group">
-
-                                                                <div class="Info">
-                                                                    <h1>
-                                                                        iPhone Case
-                                                                    </h1>
-                                                                </div>
-
-
-                                                                <div class="Price">
-                                                                    <h2>35000</h2>
-                                                                </div>
-
-                                                            </div>
-
-
-                                                            <div class="model_selector_chitietsanpham">
-                                                                <label class="label_name_chitietsanpham">Model: <span id="model_name"></span></label>
-                                                                <div class="model_buttons_chitietsanpham">
-                                                                    <button class="model_option_chitietsanpham" data-model="soft_case" selected style="padding-top: 3px;">Soft Case</button>
-                                                                    
-                                                                </div>
-                                                            </div>
-
-
-                                                
-
-
-                                                        </div>                
-                                                        
-                                                        <div class="product_features">
-
-                                                            <h3>Product Features</h3>
-                                                            <ul>
-                                                                <li>Weight 30g</li>
-                                                                <li>Thickness 1/8 inch (3mm)</li>
-                                                                <li>Since every item is made just for you by your local third-party fulfiller, there may be
-                                                                    slight
-                                                                    variances in the product received</li>
-                                                            </ul>
-
-                                                        </div>
-
-
-
-                                                        
-
-
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-
-
-
-                                        </div>
-                                    </div>
+                                     
 
 
 

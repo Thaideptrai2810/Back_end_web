@@ -1,4 +1,262 @@
-function navigateTo_giohang(sectionId) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tranggiohang.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container_giohang">
+        <div class="header_giohang">
+            <div class="left_headergiohang">
+                    <b> Danh sách sản phẩm</b>
+            </div>
+           
+
+
+        </div>
+        <div class="border_giohang">
+            <div class="content_giohang">
+                <div class="header_contentgiohang">
+                    <div class="menu_headergiohang active_giohang" onclick="navigateTo_giohang('tatcadonhang')"><b>Tất cả đơn hàng</b></div>
+                    <div class="menu_headergiohang " onclick="navigateTo_giohang('chuaxuly')"><b>Chưa xử lý</b></div>
+                    <div class="menu_headergiohang " onclick="navigateTo_giohang('daxacnhan')"><b>Đã xác nhận</b></div>
+                    <div class="menu_headergiohang " onclick="navigateTo_giohang('dagiao')"><b>Đã giao hàng</b></div>
+                    <div class="menu_headergiohang " onclick="navigateTo_giohang('dahuy')"><b>Đã hủy</b></div>
+
+                </div>
+                <div class="content_contentgiohang">
+
+
+
+
+
+                    <div class="content_contentgiohang_section" id="tatcadonhang" >
+                        
+                        <div class="search_contentgiohang">
+
+
+                            <div class="left_search_contentgiohang">
+                                <i class="fa-solid fa-filter"></i> Thêm điều kiện lọc
+                            </div>
+                            
+                            <!-- Dropdown filter -->
+                            <div class="filter-dropdown" id="filter-dropdown">
+                                <div class="filter-condition">
+
+
+                                    <label for="start-date">Ngày bắt đầu:</label>
+                                    <input type="date" id="start-date">
+                            
+
+
+                                    <label for="end-date">Ngày kết thúc:</label>
+                                    <input type="date" id="end-date">
+                            
+                                    
+                                    <label for="district">Quận:</label>
+                                        <select id="district">
+                                            <option value="">Tất cả</option>
+                                            <option value="Quận 1">Quận 1</option>
+                                            <option value="Quận 2">Quận 2</option>
+                                            <option value="Quận 3">Quận 3</option>
+                                            <option value="Quận 4">Quận 4</option>
+                                            <!-- Thêm các quận khác tại đây -->
+                                        </select>
+
+
+
+                                    <label for="order-status">Tình trạng đơn hàng:</label>
+                                    <select id="order-status">
+                                        <option value="">Tất cả</option>
+                                        <option value="Chưa xử lý">Chưa xử lý</option>
+                                        <option value="Chưa giao hàng" >Chưa giao hàng</option>
+                                        <option value="Đã giao hàng">Đã giao hàng</option>
+                                        <option value="Đã hủy">Đã hủy</option>
+                                    </select>
+                            
+
+                                    
+                            
+
+                                    <button id="clear-filters-button" onclick="resetFilters()" style="margin-left: 0px;">Xóa điều kiện lọc</button>
+
+                                </div>
+                            </div>
+                            
+                            
+
+
+                            <div class="right_search_contentgiohang">
+                                <input type="text" id="search-input" placeholder="Tìm kiếm..." />
+                            </div>
+                            <div class="right_right_search_contentgiohang">
+                               <i id="search-button" class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </div>
+
+                        
+
+                       <div class="listdonhang">
+
+    <div class="table-listdonhang">
+        <table id="orders">
+            <thead>
+                <tr>
+                    <th>Mã</th>
+                    <th>Ngày</th>
+                    <th>Tên</th>
+                    <th>Địa chỉ</th>
+                    <th>Tổng tiên</th>
+                    <th>Tình trạng</th>
+                    <th>Thao tác </th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                
+                
+            </tbody>
+        </table>
+
+
+
+
+       
+                
+
+
+
+
+    </div>
+</div>
+
+                    </div>
+
+
+
+                   
+                    <div class="content_contentgiohang_section" id="chuaxuly" >
+                        <table id="donhangchuaxuly">
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th>Ngày</th>
+                                    <th>Tên</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Tình trạng</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+
+                    <div class="content_contentgiohang_section" id="daxacnhan" >
+
+
+                        <table id="donhangdaxacnhan">
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th>Ngày</th>
+                                    <th>Tên</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Tình trạng</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+
+
+                    <div class="content_contentgiohang_section" id="dagiao" >
+
+                        <table id="donhangdagiao">
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th>Ngày</th>
+                                    <th>Tên</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Tình trạng</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                    
+
+
+
+                    <div class="content_contentgiohang_section" id="dahuy" >
+
+
+                       <table id="donhangdahuy">
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th>Ngày</th>
+                                    <th>Tên</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Tình trạng</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                       </table>
+
+                    </div>
+
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+    <!-- Cuối phần body -->
+<div id="modal"></div>
+    </div>
+  
+
+
+
+
+
+
+
+                    
+                    <SCript>
+
+
+    function navigateTo_giohang(sectionId) {
     // Ẩn tất cả các phần nội dung
     const sections = document.querySelectorAll('.content_contentgiohang_section');
     sections.forEach(section => {
@@ -87,18 +345,16 @@ function updateTable() {
     // Đảm bảo modal chỉ được tạo một lần cho mỗi đơn hàng và không làm ảnh hưởng đến bảng
     const modalHTML = `
 
-        <div class="modal-giohang" id="product-details-${order.id}" style="display: none;">
-            <div class="modal-content_giohang">
+        <div class="modal" id="product-details-${order.id}" style="display: none;">
+            <div class="modal-content">
                 
-                <span class="close-button_giohang" onclick="closeProductDetails('${order.id}')">&times;</span>
-                <div class= textmodal_giohang>
-                <h3 class="header_modal_giohang" >Chi tiết đơn hàng ${order.id}</h3>
+                <span class="close-button" onclick="closeProductDetails('${order.id}')">&times;</span>
+                <h3 class="header_modal" >Chi tiết đơn hàng ${order.id}</h3>
                 <p>Tên: ${order.name}</p>
                 <p>Địa chỉ: ${order.address}</p>
                 <p>Tổng tiền: ${order.total}</p>
                 <p>Ngày đặt: ${order.date}</p>
                 <p>Trạng thái: ${order.statusText}</p>
-                </div>
                 <!-- Thêm thông tin chi tiết khác nếu cần -->
             </div>
         </div>
@@ -296,3 +552,22 @@ function resetFilters() {
 
 // Gọi hàm updateTable để cập nhật bảng
 updateTable();
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+                    </SCript>
+</body>
+</html>

@@ -338,18 +338,15 @@ document.querySelector(".sign-in-container form").addEventListener("submit", (e)
   const email = document.querySelector(".sign-in-container input[type='email']").value.trim();
   const password = document.querySelector(".sign-in-container input[type='password']").value.trim();
 
-  // Tài khoản admin mẫu
-  const adminAccount = {
-    email: "admin@gmail.com",
-    password: "admin123",
-  };
-
   // Kiểm tra thông tin đăng nhập
-  if (email === adminAccount.email && password === adminAccount.password) {
-    
-    window.location.href = "admin.html"; // Chuyển sang trang admin
+  if (email === "admin@gmail.com" && password === "admin123") {
+    // Lưu trạng thái đăng nhập vào localStorage
+    localStorage.setItem("isLoggedIn", "true");
+
+    // Chuyển hướng sang trang admin
+    window.location.href = "admin.html";
   } else {
-    alert("Email hoặc mật khẩu không đúng. Vui lòng thử lại.");
+    alert("Sai email hoặc mật khẩu!");
   }
 });
 
