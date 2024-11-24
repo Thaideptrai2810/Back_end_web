@@ -87,16 +87,18 @@ function updateTable() {
     // Đảm bảo modal chỉ được tạo một lần cho mỗi đơn hàng và không làm ảnh hưởng đến bảng
     const modalHTML = `
         
-        <div class="modal-giohang" id="product-details-${order.id}" style="display: none;">
+        <div class="modal-giohang" id="product-details-${order.orderId}" style="display: none;">
             <div class="modal-content_giohang">
                 
-                <span class="close-button_giohang" onclick="closeProductDetails('${order.id}')">&times;</span>
+                <span class="close-button_giohang" onclick="closeProductDetails('${order.orderId}')">&times;</span>
                 <div class= textmodal_giohang>
-                <h3 class="header_modal_giohang" >Chi tiết đơn hàng ${order.id}</h3>
-                <p>Tên: ${order.name}</p>
+                <h3 class="header_modal_giohang" >Chi tiết đơn hàng ${order.orderId}</h3>
+                <p>Tên: ${order.fullName}</p>
                 <p>Địa chỉ: ${order.address}</p>
-                <p>Tổng tiền: ${order.total}</p>
-                <p>Ngày đặt: ${order.date}</p>
+                <p>Tổng tiền: ${order.totalAmount}</p>
+                <p>Ngày đặt: ${order.orderDate}</p>
+                <p>Phương thức thanh toán: ${order.paymentMethod}</p>
+       
                 <p>Trạng thái: ${order.statusText}</p>
                 </div>
                 <!-- Thêm thông tin chi tiết khác nếu cần -->
@@ -124,12 +126,14 @@ function updateTable() {
             default:
                 statusClass = 'status-khac';
         }
-    newRow.innerHTML = `
-        <td><a href="javascript:void(0);" onclick="showProductDetails('${order.id}')">${order.id}</a></td>
-        <td>${order.date}</td>
-        <td>${order.name}</td>
+        newRow.innerHTML = `
+        <td><a href="javascript:void(0);" onclick="showProductDetails('${order.orderId}')">${order.orderId}</a></td>
+        <td>${order.orderDate}</td>
+        <td>${order.fullName}</td>
         <td>${order.address}</td>
-        <td>${order.total}</td>
+        <td>${order.paymentMethod}</td>
+        <td>${order.totalAmount}</td>
+
         <td><span class="status ${statusClass}">${order.statusText}</span></td>
         <td>
             <div class="thaotac">
@@ -146,7 +150,6 @@ function updateTable() {
             </div>
         </td>
     `;
-
     tableAllOrders.appendChild(newRow);
 
 
@@ -154,19 +157,19 @@ function updateTable() {
     // Phân loại vào bảng tương ứng
     if (order.statusText === 'Chưa xử lý') {
         const newRowChuaxuly = newRow.cloneNode(true);
-        newRowChuaxuly.deleteCell(6);
+        newRowChuaxuly.deleteCell(7);
         tableChuaxuly.appendChild(newRowChuaxuly);
     } else if (order.statusText === 'Chưa giao hàng') {
         const newRowDaxacnhan = newRow.cloneNode(true);
-        newRowDaxacnhan.deleteCell(6);
+        newRowDaxacnhan.deleteCell(7);
         tableDaxacnhan.appendChild(newRowDaxacnhan);
     } else if (order.statusText === 'Đã giao hàng') {
         const newRowDagiao = newRow.cloneNode(true);
-        newRowDagiao.deleteCell(6);
+        newRowDagiao.deleteCell(7);
         tableDagiao.appendChild(newRowDagiao);
     } else if (order.statusText === 'Đã hủy') {
         const newRowDahuy = newRow.cloneNode(true);
-        newRowDahuy.deleteCell(6);
+        newRowDahuy.deleteCell(7);
         tableDahuy.appendChild(newRowDahuy);
     }
 
@@ -248,7 +251,7 @@ function filterOrders() {
     rows.forEach(row => {
         const dateText = row.cells[1].innerText.trim(); // Ngày trong bảng, ví dụ "23/11/2024"
         const orderDistrict = row.cells[3].innerText; // Địa chỉ
-        const orderStatus = row.cells[5].innerText; // Trạng thái
+        const orderStatus = row.cells[6].innerText; // Trạng thái
 
         let showRow = true;
 

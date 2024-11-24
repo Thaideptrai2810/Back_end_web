@@ -59,7 +59,7 @@ function displayProducts() {
         // Tạo nội dung cho mỗi ô trong hàng
         row.innerHTML = `
             <td>${product.id}</td>
-            <td>${product.caseType}</td>
+            <td>${product.category}</td>
             <td>${product.name}</td>
             <td>${product.model}</td>
             <td>${imageContent}</td>
@@ -99,7 +99,7 @@ function displayProducts() {
         // Tạo nội dung cho mỗi ô trong hàng
         row.innerHTML = `
             <td>${product.id}</td>
-            <td>${product.caseType}</td>
+            <td>${product.category}</td>
             <td>${product.name}</td>
             <td>${product.model}</td>
             <td>${imageContent}</td>
@@ -223,7 +223,7 @@ function storeProductData(productCase, productName, productBrand, productModel, 
     const newProduct = {
         id: productID,
         name: productName,
-        caseType: productCase,
+        category: productCase,
         brand: productBrand,
         model: productModel,
         image: productImagePath,
@@ -276,7 +276,7 @@ const product = products.find(product => product.id === productID);
 if (product) {
     // Điền thông tin sản phẩm vào form chỉnh sửa
     document.getElementById("editProductName").value = product.name;
-    document.getElementById("editProductCase").value = product.caseType;
+    document.getElementById("editProductCase").value = product.category;
     document.getElementById("editProductBrand").value = product.brand;
     document.getElementById("editProductModel").value = product.model;
     document.getElementById("editProductPrice").value = product.price;
@@ -316,7 +316,7 @@ function saveEditedProduct() {
     if (index !== -1) {
         const updatedProduct = {
             ...products[index],
-            caseType: productCase,
+            category: productCase,
             name: productName,
             brand: productBrand,
             model: productModel,
