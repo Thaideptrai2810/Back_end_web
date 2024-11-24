@@ -138,7 +138,7 @@ function formatCurrency(price) {
     // Thêm đơn vị VND vào cuối
     return formattedPrice + '₫';
 }
-function saveProducts(){
+function saveProducts() {
     const productCase = document.getElementById("case").value;
     const productName = document.getElementById("productName").value;
     const productBrand = document.getElementById("productBrand").value;
@@ -172,14 +172,14 @@ function saveProducts(){
         return;
     }
 
-    if (!productPrice) {
-        alert("Giá bán không được để trống!");
+    if (!productPrice || isNaN(productPrice) || parseFloat(productPrice) <= 0) {
+        alert("Giá bán phải là số lớn hơn 0!");
         document.getElementById("productPrice").focus();
         return;
     }
-
-    if (!productQuantity) {
-        alert("Số lượng không được để trống!");
+    
+    if (!productQuantity || isNaN(productQuantity) || parseInt(productQuantity) <= 0) {
+        alert("Số lượng phải là số nguyên lớn hơn 0!");
         document.getElementById("productQuantity").focus();
         return;
     }
@@ -191,35 +191,33 @@ function saveProducts(){
     }
 
     if (fileInput.files[0]) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const productImagePath = e.target.result; // Base64 string
-        const brandCode = { "Apple": "ip", "Samsung": "sm" };
-        const code = brandCode[productBrand];
-        const products = JSON.parse(localStorage.getItem("products")) || [];
-        const id = products.length + 1;
-        const productID = code + "-" + id;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const productImagePath = e.target.result; // Base64 string
+            const products = JSON.parse(localStorage.getItem("products")) || [];
+            const id = products.length + 1; // Simple sequential ID
+            const productID = id.toString(); // Use just the ID as a number
 
-        storeProductData(
-            productCase,
-            productName,
-            productBrand,
-            productModel,
-            productPrice,
-            productQuantity,
-            productDescription,
-            productImagePath, // Base64 image
-            productID
-        );
-    };
-    reader.readAsDataURL(fileInput.files[0]); // Chuyển ảnh thành Base64
-} else {
-    alert("Vui lòng chọn ảnh sản phẩm!");
-    document.getElementById("productImage").focus();
-    return;
+            storeProductData(
+                productCase,
+                productName,
+                productBrand,
+                productModel,
+                productPrice,
+                productQuantity,
+                productDescription,
+                productImagePath, // Base64 image
+                productID
+            );
+        };
+        reader.readAsDataURL(fileInput.files[0]); // Convert image to Base64
+    } else {
+        alert("Vui lòng chọn ảnh sản phẩm!");
+        document.getElementById("productImage").focus();
+        return;
+    }
 }
 
-}
 
 function storeProductData(productCase, productName, productBrand, productModel, productPrice, productQuantity, productDescription, productImagePath, productID) {
     const newProduct = {
@@ -312,12 +310,6 @@ function saveEditedProduct() {
         return;
     }
 
-    // Tạo mã thương hiệu
-    const brandCodes = {
-        "Apple": "ip",
-        "Samsung": "sm",
-    };
-
     let products = JSON.parse(localStorage.getItem("products")) || [];
     const index = products.findIndex(product => product.id === productToEdit);
 
@@ -333,13 +325,10 @@ function saveEditedProduct() {
             description: productDescription
         };
 
-        // Cập nhật mã sản phẩm nếu thương hiệu thay đổi
-        const originalID = products[index].id;
-        const originalNumber = originalID.split("-")[1];
-        // Giữ nguyên số thứ tự ban đầu
-        updatedProduct.id = `${brandCodes[productBrand]}-${originalNumber}`;
+        // Keep the same ID (sequential number)
+        updatedProduct.id = products[index].id; // No need to modify ID
 
-        // Cập nhật ảnh nếu có tệp mới hoặc ảnh bị xóa
+        // Update image if new file is selected or image is deleted
         if (editProductImage.files[0]) {
             updatedProduct.image = `img/product/Case/${editProductImage.files[0].name}`;
         } else if (document.getElementById("editImagePreview").style.display === "none") {
@@ -351,7 +340,8 @@ function saveEditedProduct() {
         displayProducts();
         closeEditProduct();
     }
-    }
+}
+
 
 
     function previewEditImage() {

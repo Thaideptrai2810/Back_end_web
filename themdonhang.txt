@@ -1,23 +1,28 @@
 // Lấy danh sách đơn hàng từ localStorage, nếu không có sẽ trả về mảng rỗng
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-// Tạo đơn hàng mới
-let newOrder = {
-    id: '#DH' + (orders.length + 1), // Tăng ID đơn hàng
-    date: "23/11/2024", // Ngày đơn hàng
-    name: "Nguyễn Văn B", // Tên khách hàng
-    address: "Quận 3", // Địa chỉ giao hàng
-    total: "150,000 ₫", // Tổng tiền
-    status: "processing", // Trạng thái đơn hàng
-    statusText: "Chưa giao hàng", // Trạng thái hiển thị
-    actionText: "Xử lý" // Hành động xác nhận
-};
+// Tạo danh sách 10 đơn hàng mới
+let newOrders = [
+    { date: "23/11/2024", name: "Nguyễn Văn A", address: "Quận 1", total: "150,000 ₫", status: "processing", statusText: "Chưa giao hàng", actionText: "Xử lý" },
+    { date: "24/11/2024", name: "Lê Thị B", address: "Quận 2", total: "200,000 ₫", status: "processing", statusText: "Chưa xử lý", actionText: "Xử lý" },
+    { date: "25/11/2024", name: "Trần Minh C", address: "Quận 3", total: "250,000 ₫", status: "completed", statusText: "Đã giao hàng", actionText: "Đã xử lý" },
+    { date: "26/11/2024", name: "Phạm Kim D", address: "Quận 4", total: "300,000 ₫", status: "cancelled", statusText: "Đã hủy", actionText: "Đã hủy" },
+    { date: "27/11/2024", name: "Hoàng Anh E", address: "Quận 5", total: "100,000 ₫", status: "processing", statusText: "Chưa xử lý", actionText: "Xử lý" },
+    { date: "28/11/2024", name: "Nguyễn Văn F", address: "Quận 6", total: "400,000 ₫", status: "completed", statusText: "Đã giao hàng", actionText: "Đã xử lý" },
+    { date: "29/11/2024", name: "Lê Thị G", address: "Quận 7", total: "500,000 ₫", status: "processing", statusText: "Chưa giao hàng", actionText: "Xử lý" },
+    { date: "30/11/2024", name: "Trần Minh H", address: "Quận 8", total: "350,000 ₫", status: "cancelled", statusText: "Đã hủy", actionText: "Đã hủy" },
+    { date: "01/12/2024", name: "Phạm Kim I", address: "Quận 9", total: "450,000 ₫", status: "completed", statusText: "Chưa xử lý", actionText: "Đã xử lý" },
+    { date: "02/12/2024", name: "Hoàng Anh J", address: "Quận 10", total: "600,000 ₫", status: "processing", statusText: "Chưa giao hàng", actionText: "Xử lý" }
+];
 
-// Thêm đơn hàng vào danh sách
-orders.push(newOrder);
+// Thêm các đơn hàng vào danh sách
+newOrders.forEach(order => {
+    order.id = '#DH' + (orders.length + 1); // Tăng ID đơn hàng
+    orders.push(order);
+});
 
 // Lưu lại danh sách đơn hàng vào localStorage
 localStorage.setItem('orders', JSON.stringify(orders));
 
 // Hiển thị thông báo thành công
-console.log("Đơn hàng mới đã được thêm vào Local Storage.");
+console.log("10 đơn hàng đã được thêm vào Local Storage.");

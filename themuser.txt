@@ -1,20 +1,28 @@
 // Lấy danh sách người dùng hiện tại từ Local Storage
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
-// Tạo người dùng mới
-let newUser = {
-    id: users.length + 1, // Tăng ID tự động
-    email: "newuser@example.com",
-    phone: "0123456789",
-    address: "123 Main Street",
-    spending: 0,
-    status: "unlocked"
-};
+// Tạo danh sách người dùng mới với 10 phần tử
+let newUsers = [
+    { email: "user1@example.com", phone: "0123456781", address: "123 Main Street", spending: 50, status: "unlocked" },
+    { email: "user2@example.com", phone: "0123456782", address: "456 Elm Street", spending: 100, status: "locked" },
+    { email: "user3@example.com", phone: "0123456783", address: "789 Oak Avenue", spending: 200, status: "unlocked" },
+    { email: "user4@example.com", phone: "0123456784", address: "321 Pine Road", spending: 150, status: "unlocked" },
+    { email: "user5@example.com", phone: "0123456785", address: "654 Birch Boulevard", spending: 300, status: "locked" },
+    { email: "user6@example.com", phone: "0123456786", address: "987 Maple Drive", spending: 500, status: "unlocked" },
+    { email: "user7@example.com", phone: "0123456787", address: "741 Cedar Street", spending: 0, status: "unlocked" },
+    { email: "user8@example.com", phone: "0123456788", address: "852 Spruce Avenue", spending: 20, status: "locked" },
+    { email: "user9@example.com", phone: "0123456789", address: "963 Willow Road", spending: 70, status: "unlocked" },
+    { email: "user10@example.com", phone: "0123456790", address: "159 Maple Lane", spending: 450, status: "locked" }
+];
 
 // Thêm người dùng mới vào danh sách
-users.push(newUser);
+newUsers.forEach(user => {
+    user.id = users.length + 1; // Tăng ID tự động
+    users.push(user);
+});
 
 // Lưu danh sách người dùng lại vào Local Storage
 localStorage.setItem('users', JSON.stringify(users));
 
-console.log("Người dùng mới đã được thêm:");
+console.log("10 người dùng đã được thêm vào cơ sở dữ liệu:");
+console.log(users);

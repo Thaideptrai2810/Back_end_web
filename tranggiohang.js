@@ -86,7 +86,7 @@ function updateTable() {
     
     // Đảm bảo modal chỉ được tạo một lần cho mỗi đơn hàng và không làm ảnh hưởng đến bảng
     const modalHTML = `
-
+        
         <div class="modal-giohang" id="product-details-${order.id}" style="display: none;">
             <div class="modal-content_giohang">
                 
@@ -275,7 +275,31 @@ function filterOrders() {
 
 
         // Kiểm tra bộ lọc quận
-        if (district && !orderDistrict.includes(district)) showRow = false;
+    if (district) {
+    // Chuẩn hóa và tách quận trong cả bộ lọc và trong dữ liệu
+    let normalizedDistrict = district.trim().toLowerCase();
+    let normalizedOrderDistrict = orderDistrict.trim().toLowerCase();
+
+    // Tách các phần của quận nếu có thể
+    let districtParts = normalizedDistrict.split(" "); // Tách phần "Quận" và số
+    let orderDistrictParts = normalizedOrderDistrict.split(" "); // Tách phần "Quận" và số
+
+    // Kiểm tra nếu quận và số quận khớp
+    if (districtParts.length === 2 && orderDistrictParts.length === 2) {
+        let districtNumber = districtParts[1]; // Lấy số quận
+        let orderDistrictNumber = orderDistrictParts[1]; // Lấy số quận trong đơn hàng
+        
+        // So sánh số quận
+        if (districtNumber !== orderDistrictNumber) {
+            showRow = false;  // Nếu không khớp, ẩn dòng
+        }
+    } else {
+        // Trường hợp không có "Quận" và số
+        if (!normalizedOrderDistrict.includes(normalizedDistrict)) {
+            showRow = false; // Nếu địa chỉ không khớp, ẩn dòng
+        }
+    }
+}
 
         // Kiểm tra bộ lọc trạng thái
         if (status && orderStatus.trim().toLowerCase() !== status.trim().toLowerCase()) showRow = false;
